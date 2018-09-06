@@ -5,13 +5,14 @@ Author Anders Krogsager. ITK October 2017
 Main behavior for SoftBank Pepper 1.7
 uuid="readingbuddy001"
 """
-exit(-1)  #TODO Update UUID!
-
 
 import sys
 import os
 import qi
 from flask import Flask, render_template, request
+
+flaskapp = Flask(__name__)
+
 #from utilities.sendMail import choregrapheMail
 #from time import time, sleep
 #import datetime
@@ -19,7 +20,7 @@ from flask import Flask, render_template, request
 #import threading
 
 #startLock = threading.Lock()
-DEBUG = False
+DEBUG = True
 """when debug is true: people are ignored by autonomous life. Head touch triggers monologue"""
 
 OPTIONAL_NET_CONNECTON = False #If set to False, then internet connection is required.
@@ -48,18 +49,18 @@ class PythonAppMain(object):
 
         self.animatedSpeech = self.session.service("ALAnimatedSpeech")
         self.animationPlayer = self.session.service("ALAnimationPlayer")
-        self.life = self.session.service("ALAutonomousLife")
+        #self.life = self.session.service("ALAutonomousLife")
         'skip set state interactive' if DEBUG == True else self.life.setState('interactive')
-        #self.perception = self.session.service("ALPeoplePerception")
+        self.perception = self.session.service("ALPeoplePerception")
         self.tracker = self.session.service("ALTracker")
 
         #Setup
         #self.perception.setTimeBeforePersonDisappears(5.0) #seconds
         #self.perception.setMaximumDetectionRange(2) #meters
-        self.life.setAutonomousAbilitiyEnabled("All",False)
-        self.tracker.unregisterAllTargets()
-        self.motion.setBreathEnable("Arms",True)
-        self.posture.applyPosture('Stand',0.5)
+        #self.life.setAutonomousAbilityEnabled("All",False)
+        #self.tracker.unregisterAllTargets()
+        #self.motion.setBreathEnabled("Arms",True)
+        #self.posture.applyPosture('Stand',0.5)
         self.notification = self.session.service("ALNotificationManager")
 
 
@@ -113,39 +114,18 @@ class PythonAppMain(object):
             self.stop_app
         """
 
-        app = Flask(__name__)
-
-        @app.route('/')
+        @flaskapp.route('/')
         def hello_world():
+            self.animatedSpeech.say("velkommen til historien")
             return render_template('index.html')
 
-        @app.route('/getInput', methods=['POST', 'GET'])
+
+        @flaskapp.route('/', methods=['POST', 'GET'])
         def request_prediction():
-            multidict = request.form
+            self.animatedSpeech.say("du trykkede på knappen")
 
-            strdt = multidict['dateTime']
-            strgc = multidict['garageCode']
+            return render_template('result.html', predictionResult="some bla bla")
 
-            print("received from web:")
-            # print(multidict)
-            print(strdt)
-            print(strgc)
-
-            try:
-                pred = {'date': strdt,
-                        'vehicleCount': [1],
-                        'totalSpaces': [1],
-                        'garageCode': strgc}
-
-                nnresult = str(pnn.predict(pred))
-                return render_template('result.html', predictionResult=nnresult)
-
-            except Exception as e:
-                print(e)
-                return render_template('result.html', predictionResult="unexpected exception occurred in model")
-
-        if __name__ == "__main__":
-            app.run()  # start flask
 
 
     @qi.nobind
@@ -418,6 +398,10 @@ if __name__ == "__main__":
     service_instance = PythonAppMain(app)
     service_id = app.session.registerService(service_instance.service_name, service_instance)
     service_instance.start_app()
+    flaskapp.run(host='0.0.0.0', port=5000)  # start flask
     app.run()
+
+
+
     service_instance.cleanup()
     app.session.unregisterService(service_id)

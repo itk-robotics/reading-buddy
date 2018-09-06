@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<package version="1.0.0" uuid="readingbuddy001"> <!--TODO set UUID -->
+ <names>
+  <name lang="en_US">Reading Buddy</name> <!--TODO set name-->
+ </names>
+ <descriptions>
+  <description lang="en_US">v0.01 reading buddy </description>
+ </descriptions>
+ <supportedLanguages>
+  <language>en_US</language>
+ </supportedLanguages>
+ <descriptionLanguages>
+  <language>en_US</language>
+ </descriptionLanguages>
+ <contents>
+  <behaviorContent path="volume">
+   <userRequestable/>
+   <nature>interactive</nature>
+   <autonomous>
+    <condition purpose="launchTrigger"><![CDATA[('RightBumperPressed' == 1) ~ 3]]></condition> <!--TODO verify -->
+   </autonomous>
+   <permissions/>
+  </behaviorContent>
+  <behaviorContent path="config">
+   <userRequestable/>
+   <nature>interactive</nature>
+   <autonomous>
+    <condition purpose="launchTrigger"><![CDATA[('LeftBumperPressed' == 1) ~ 3]]></condition> <!--TODO verify -->
+   </autonomous>
+   <permissions/>
+  </behaviorContent>
+  <behaviorContent path=".">
+   <userRequestable/>
+   <nature>interactive</nature>
+   <names>
+    <name lang="en_US">TODO</name>
+   </names>
+   <descriptions>
+    <description lang="en_US">TODO</description>
+   </descriptions>
+   <autonomous>
+    <condition purpose="launchTrigger"><![CDATA[('BackBumperPressed' == 1) ~ 3]]></condition> <!--TODO verify -->
+   </autonomous>
+   <permissions/>
+  </behaviorContent>
+ </contents>
+ <services>
+  <service execStart="main.py" name="PythonAppMain" autorun="false"/>
+ </services>
+ <executableFiles>
+  <file path="main.py"/>
+ </executableFiles>
+</package>

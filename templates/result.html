@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parking demo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+<header class="navbar navbar-default">
+  <span class="navbar-text"> ITK Development experimental AI. Trained with
+      <a href="https://portal.opendata.dk/dataset/parkeringshuse-i-aarhus/resource/2a82a145-0195-4081-a13c-b0e587e9b89c">OPEN DATA DK</a>
+  </span>
+</header>
+
+
+
+<div>Prediction: {{ predictionResult }}</div>
+<img class="img-responsive" src={{ predictionResult }}> </img>
+
+<div>
+  <a href="/">Forside</a>
+</div>
+
+</body>
+</html>

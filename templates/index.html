@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parking demo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+
+<body>
+<header class="navbar navbar-default">
+  <span class="navbar-text"> ITK Development experimental AI. Trained with
+      <a href="https://portal.opendata.dk/dataset/parkeringshuse-i-aarhus/resource/2a82a145-0195-4081-a13c-b0e587e9b89c">OPEN DATA DK</a>
+  </span>
+</header>
+
+
+<form action="/getInput" method="post">
+    <fieldset>
+        <legend>Prediction target</legend>
+        <select name="garageCode">
+            <option value="NORREPORT" checked> Nørreport<br>
+            <option value="SCANDCENTER"> Scandinavian Center<br>
+            <option value="BRUUNS"> Bruuns<br>
+            <option value="MAGASIN"> Magasin<br>
+            <option value="KALKVAERKSVEJ"> Kalkværksvej<br>
+            <option value="SALLING"> Salling<br>
+            <option value="Navitas"> Navitas<br>
+            <option value="NewBusgadehuset"> Busgaden Parkeringshus<br>
+            <option value="Urban Level 1"> Urban Level 1<br>
+            <option value="Urban Level 2+3"> Urban Level 2+3<br>
+        </select>
+        <input type="datetime-local" name="dateTime" min="2018-06-03T12:00:00.0" max="2038-12-31T12:00:00.0">
+    </fieldset>
+
+    <input type="submit" value="Send request" class="btn btn-primary">
+</form>
+
+</body>
+</html>

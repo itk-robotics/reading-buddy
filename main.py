@@ -20,7 +20,7 @@ flaskapp = Flask(__name__)
 #import threading
 
 #startLock = threading.Lock()
-DEBUG = True
+DEBUG = False
 """when debug is true: people are ignored by autonomous life. Head touch triggers monologue"""
 
 OPTIONAL_NET_CONNECTON = False #If set to False, then internet connection is required.
@@ -42,6 +42,7 @@ class PythonAppMain(object):
         self.logger.info("Initializing...")
         self.motion = self.session.service("ALMotion")
         self.posture = self.session.service("ALRobotPosture")
+        self.beman = self.session.service("ALBehaviorManager")
         #self.mail = choregrapheMail()
         #self.systemMail = self.mail
         self.audio = self.session.service("ALAudioPlayer")
@@ -49,7 +50,7 @@ class PythonAppMain(object):
 
         self.animatedSpeech = self.session.service("ALAnimatedSpeech")
         self.animationPlayer = self.session.service("ALAnimationPlayer")
-        #self.life = self.session.service("ALAutonomousLife")
+        self.life = self.session.service("ALAutonomousLife")
         'skip set state interactive' if DEBUG == True else self.life.setState('interactive')
         self.perception = self.session.service("ALPeoplePerception")
         self.tracker = self.session.service("ALTracker")
@@ -57,10 +58,10 @@ class PythonAppMain(object):
         #Setup
         #self.perception.setTimeBeforePersonDisappears(5.0) #seconds
         #self.perception.setMaximumDetectionRange(2) #meters
-        #self.life.setAutonomousAbilityEnabled("All",False)
-        #self.tracker.unregisterAllTargets()
-        #self.motion.setBreathEnabled("Arms",True)
-        #self.posture.applyPosture('Stand',0.5)
+        self.life.setAutonomousAbilityEnabled("All",False)
+        self.tracker.unregisterAllTargets()
+        self.motion.setBreathEnabled("Arms",True)
+        self.posture.applyPosture('Stand',0.5)
         self.notification = self.session.service("ALNotificationManager")
 
 
@@ -116,18 +117,103 @@ class PythonAppMain(object):
 
         @flaskapp.route('/')
         def hello_world():
-            self.animatedSpeech.say("velkommen til historien")
             return render_template('index.html')
 
 
-        @flaskapp.route('/', methods=['POST', 'GET'])
-        def request_prediction():
-            self.animatedSpeech.say("du trykkede på knappen")
 
-            return render_template('result.html', predictionResult="some bla bla")
+        @flaskapp.route('/02.html', methods=['POST', 'GET'])
+        def send_page2():
+            self.beman.runBehavior("aarhustest-c0d5d9/Intro")
+            return render_template('02.html')
 
+        @flaskapp.route('/03.html', methods=['POST', 'GET'])
+        def send_page3():
+            return render_template('03.html')
 
+        @flaskapp.route('/04.html', methods=['POST', 'GET'])
+        def send_page4():
+            return render_template('04.html')
 
+        @flaskapp.route('/05.html', methods=['POST', 'GET'])
+        def send_page5():
+            return render_template('05.html')
+
+        @flaskapp.route('/06.html', methods=['POST', 'GET'])
+        def send_page6():
+            return render_template('06.html')
+
+        @flaskapp.route('/07.html', methods=['POST', 'GET'])
+        def send_page7():
+            return render_template('07.html')
+
+        @flaskapp.route('/08.html', methods=['POST', 'GET'])
+        def send_page8():
+            qi.async(self.beman.runBehavior, "aarhustest-c0d5d9/Nedslag1")
+            return render_template('08.html')
+
+        @flaskapp.route('/09.html', methods=['POST', 'GET'])
+        def send_page9():
+            return render_template('09.html')
+
+        @flaskapp.route('/10.html', methods=['POST', 'GET'])
+        def send_page10():
+            qi.async(self.beman.runBehavior,"aarhustest-c0d5d9/Bange")
+
+            return render_template('10.html')
+
+        @flaskapp.route('/11.html', methods=['POST', 'GET'])
+        def send_page11():
+            qi.async(self.beman.runBehavior,"aarhustest-c0d5d9/Bekymret")
+            return render_template('11.html')
+
+        @flaskapp.route('/12.html', methods=['POST', 'GET'])
+        def send_page12():
+            self.animatedSpeech.say("Tak, nu forstår jeg historien meget bedre. Skal vi ikke læse næste kapitel nu?\\pau=500\\ Er den næste klar til at læse højt for mig? Jeg lytter nu.")
+            return render_template('12.html')
+
+        @flaskapp.route('/13.html', methods=['POST', 'GET'])
+        def send_page13():
+            return render_template('13.html')
+
+        @flaskapp.route('/14.html', methods=['POST', 'GET'])
+        def send_page14():
+            return render_template('14.html')
+
+        @flaskapp.route('/15.html', methods=['POST', 'GET'])
+        def send_page15():
+            return render_template('15.html')
+
+        @flaskapp.route('/16.html', methods=['POST', 'GET'])
+        def send_page16():
+            return render_template('16.html')
+
+        @flaskapp.route('/17.html', methods=['POST', 'GET'])
+        def send_page17():
+            return render_template('17.html')
+
+        @flaskapp.route('/18.html', methods=['POST', 'GET'])
+        def send_page18():
+            qi.async(self.beman.runBehavior, "aarhustest-c0d5d9/Nedslag_2")
+            return render_template('18.html')
+
+        @flaskapp.route('/19.html', methods=['POST', 'GET'])
+        def send_page19():
+            return render_template('19.html')
+
+        @flaskapp.route('/20.html', methods=['POST', 'GET'])
+        def send_page20():
+            qi.async(self.beman.runBehavior, "aarhustest-c0d5d9/Familie")
+            return render_template('20.html')
+
+        @flaskapp.route('/21.html', methods=['POST', 'GET'])
+        def send_page21():
+            self.beman.runBehavior("aarhustest-c0d5d9/Venner")
+            return render_template('21.html')
+
+        @flaskapp.route('/22.html', methods=['POST', 'GET'])
+        def send_page22():
+            qi.async(self.animatedSpeech.say,"Det var de første 2 kapitler af Drageridderne, Tiggerdrengen Tam. Tak for oplæsningen.")
+            return render_template('22.html')
     @qi.nobind
     def headtouchEvent(self,var):
         if var == 0.0:

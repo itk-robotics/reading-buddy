@@ -1,0 +1,14 @@
+html, body, a {
+    margin: 0;
+    padding: 0;
+}
+
+a.linka, a.linkb {
+    width: 384px;
+    height: 1024px;
+    display: block;
+    position: absolute;
+}
+a.linkb {
+    left: 384px;
+}

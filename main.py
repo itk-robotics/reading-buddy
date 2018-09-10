@@ -13,6 +13,7 @@ from flask import Flask, render_template, request
 
 flaskapp = Flask(__name__)
 
+
 #from utilities.sendMail import choregrapheMail
 #from time import time, sleep
 #import datetime
@@ -59,8 +60,10 @@ class PythonAppMain(object):
         #self.perception.setTimeBeforePersonDisappears(5.0) #seconds
         #self.perception.setMaximumDetectionRange(2) #meters
         self.life.setAutonomousAbilityEnabled("All",False)
+        #self.life.setAutonomousAbilityEnabled("SpeakingMovement", True)"""http://doc.aldebaran.com/2-5/naoqi/interaction/autonomousabilities/alspeakingmovement.html"""
         self.tracker.unregisterAllTargets()
         self.motion.setBreathEnabled("Arms",True)
+        #TODO breathing chest/head?
         self.posture.applyPosture('Stand',0.5)
         self.notification = self.session.service("ALNotificationManager")
 
@@ -116,9 +119,9 @@ class PythonAppMain(object):
         """
 
         @flaskapp.route('/')
+        @flaskapp.route('/index')
         def hello_world():
             return render_template('index.html')
-
 
 
         @flaskapp.route('/02.html', methods=['POST', 'GET'])

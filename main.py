@@ -5,13 +5,15 @@ Author Anders Krogsager. ITK October 2017
 Main behavior for SoftBank Pepper 1.7
 uuid="readingbuddy001"
 """
-exit(-1)  #TODO Update UUID!
-
 
 import sys
 import os
 import qi
 from flask import Flask, render_template, request
+
+flaskapp = Flask(__name__)
+
+
 #from utilities.sendMail import choregrapheMail
 #from time import time, sleep
 #import datetime
@@ -41,6 +43,7 @@ class PythonAppMain(object):
         self.logger.info("Initializing...")
         self.motion = self.session.service("ALMotion")
         self.posture = self.session.service("ALRobotPosture")
+        self.beman = self.session.service("ALBehaviorManager")
         #self.mail = choregrapheMail()
         #self.systemMail = self.mail
         self.audio = self.session.service("ALAudioPlayer")
@@ -50,15 +53,17 @@ class PythonAppMain(object):
         self.animationPlayer = self.session.service("ALAnimationPlayer")
         self.life = self.session.service("ALAutonomousLife")
         'skip set state interactive' if DEBUG == True else self.life.setState('interactive')
-        #self.perception = self.session.service("ALPeoplePerception")
+        self.perception = self.session.service("ALPeoplePerception")
         self.tracker = self.session.service("ALTracker")
 
         #Setup
         #self.perception.setTimeBeforePersonDisappears(5.0) #seconds
         #self.perception.setMaximumDetectionRange(2) #meters
-        self.life.setAutonomousAbilitiyEnabled("All",False)
+        self.life.setAutonomousAbilityEnabled("All",False)
+        #self.life.setAutonomousAbilityEnabled("SpeakingMovement", True)"""http://doc.aldebaran.com/2-5/naoqi/interaction/autonomousabilities/alspeakingmovement.html"""
         self.tracker.unregisterAllTargets()
-        self.motion.setBreathEnable("Arms",True)
+        self.motion.setBreathEnabled("Arms",True)
+        #TODO breathing chest/head?
         self.posture.applyPosture('Stand',0.5)
         self.notification = self.session.service("ALNotificationManager")
 
@@ -113,41 +118,105 @@ class PythonAppMain(object):
             self.stop_app
         """
 
-        app = Flask(__name__)
-
-        @app.route('/')
+        @flaskapp.route('/')
+        @flaskapp.route('/index')
         def hello_world():
             return render_template('index.html')
 
-        @app.route('/getInput', methods=['POST', 'GET'])
-        def request_prediction():
-            multidict = request.form
 
-            strdt = multidict['dateTime']
-            strgc = multidict['garageCode']
+        @flaskapp.route('/02.html', methods=['POST', 'GET'])
+        def send_page2():
+            self.beman.runBehavior("aarhustest-c0d5d9/Intro")
+            return render_template('02.html')
 
-            print("received from web:")
-            # print(multidict)
-            print(strdt)
-            print(strgc)
+        @flaskapp.route('/03.html', methods=['POST', 'GET'])
+        def send_page3():
+            return render_template('03.html')
 
-            try:
-                pred = {'date': strdt,
-                        'vehicleCount': [1],
-                        'totalSpaces': [1],
-                        'garageCode': strgc}
+        @flaskapp.route('/04.html', methods=['POST', 'GET'])
+        def send_page4():
+            return render_template('04.html')
 
-                nnresult = str(pnn.predict(pred))
-                return render_template('result.html', predictionResult=nnresult)
+        @flaskapp.route('/05.html', methods=['POST', 'GET'])
+        def send_page5():
+            return render_template('05.html')
 
-            except Exception as e:
-                print(e)
-                return render_template('result.html', predictionResult="unexpected exception occurred in model")
+        @flaskapp.route('/06.html', methods=['POST', 'GET'])
+        def send_page6():
+            return render_template('06.html')
 
-        if __name__ == "__main__":
-            app.run()  # start flask
+        @flaskapp.route('/07.html', methods=['POST', 'GET'])
+        def send_page7():
+            return render_template('07.html')
 
+        @flaskapp.route('/08.html', methods=['POST', 'GET'])
+        def send_page8():
+            qi.async(self.beman.runBehavior, "aarhustest-c0d5d9/Nedslag1")
+            return render_template('08.html')
 
+        @flaskapp.route('/09.html', methods=['POST', 'GET'])
+        def send_page9():
+            return render_template('09.html')
+
+        @flaskapp.route('/10.html', methods=['POST', 'GET'])
+        def send_page10():
+            qi.async(self.beman.runBehavior,"aarhustest-c0d5d9/Bange")
+
+            return render_template('10.html')
+
+        @flaskapp.route('/11.html', methods=['POST', 'GET'])
+        def send_page11():
+            qi.async(self.beman.runBehavior,"aarhustest-c0d5d9/Bekymret")
+            return render_template('11.html')
+
+        @flaskapp.route('/12.html', methods=['POST', 'GET'])
+        def send_page12():
+            self.animatedSpeech.say("Tak, nu forstår jeg historien meget bedre. Skal vi ikke læse næste kapitel nu?\\pau=500\\ Er den næste klar til at læse højt for mig? Jeg lytter nu.")
+            return render_template('12.html')
+
+        @flaskapp.route('/13.html', methods=['POST', 'GET'])
+        def send_page13():
+            return render_template('13.html')
+
+        @flaskapp.route('/14.html', methods=['POST', 'GET'])
+        def send_page14():
+            return render_template('14.html')
+
+        @flaskapp.route('/15.html', methods=['POST', 'GET'])
+        def send_page15():
+            return render_template('15.html')
+
+        @flaskapp.route('/16.html', methods=['POST', 'GET'])
+        def send_page16():
+            return render_template('16.html')
+
+        @flaskapp.route('/17.html', methods=['POST', 'GET'])
+        def send_page17():
+            return render_template('17.html')
+
+        @flaskapp.route('/18.html', methods=['POST', 'GET'])
+        def send_page18():
+            qi.async(self.beman.runBehavior, "aarhustest-c0d5d9/Nedslag_2")
+            return render_template('18.html')
+
+        @flaskapp.route('/19.html', methods=['POST', 'GET'])
+        def send_page19():
+            return render_template('19.html')
+
+        @flaskapp.route('/20.html', methods=['POST', 'GET'])
+        def send_page20():
+            qi.async(self.beman.runBehavior, "aarhustest-c0d5d9/Familie")
+            return render_template('20.html')
+
+        @flaskapp.route('/21.html', methods=['POST', 'GET'])
+        def send_page21():
+            self.beman.runBehavior("aarhustest-c0d5d9/Venner")
+            return render_template('21.html')
+
+        @flaskapp.route('/22.html', methods=['POST', 'GET'])
+        def send_page22():
+            qi.async(self.animatedSpeech.say,"Det var de første 2 kapitler af Drageridderne, Tiggerdrengen Tam. Tak for oplæsningen.")
+            return render_template('22.html')
     @qi.nobind
     def headtouchEvent(self,var):
         if var == 0.0:
@@ -418,6 +487,10 @@ if __name__ == "__main__":
     service_instance = PythonAppMain(app)
     service_id = app.session.registerService(service_instance.service_name, service_instance)
     service_instance.start_app()
+    flaskapp.run(host='0.0.0.0', port=5000)  # start flask
     app.run()
+
+
+
     service_instance.cleanup()
     app.session.unregisterService(service_id)

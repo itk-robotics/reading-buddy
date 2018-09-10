@@ -21,7 +21,7 @@ flaskapp = Flask(__name__)
 #import threading
 
 #startLock = threading.Lock()
-DEBUG = False
+DEBUG = True
 """when debug is true: people are ignored by autonomous life. Head touch triggers monologue"""
 
 OPTIONAL_NET_CONNECTON = False #If set to False, then internet connection is required.
@@ -118,12 +118,26 @@ class PythonAppMain(object):
             self.stop_app
         """
 
+        STORY = "story_1" + os.sep #dir name
+
         @flaskapp.route('/')
         @flaskapp.route('/index')
-        def hello_world():
-            return render_template('index.html')
+        def index():
+            user = {'username': 'Miguel'}
+            posts = [
+                {
+                    'author': {'username': 'John'},
+                    'body': 'Beautiful day in Portland!'
+                },
+                {
+                    'author': {'username': 'Susan'},
+                    'body': 'The Avengers movie was so cool!'
+                }
+            ]
+            return render_template(STORY+'index.html', title='Home', user=user, posts=posts)
 
-
+        #first HTML solution disabled.
+        """
         @flaskapp.route('/02.html', methods=['POST', 'GET'])
         def send_page2():
             self.beman.runBehavior("aarhustest-c0d5d9/Intro")
@@ -217,6 +231,8 @@ class PythonAppMain(object):
         def send_page22():
             qi.async(self.animatedSpeech.say,"Det var de første 2 kapitler af Drageridderne, Tiggerdrengen Tam. Tak for oplæsningen.")
             return render_template('22.html')
+        """
+
     @qi.nobind
     def headtouchEvent(self,var):
         if var == 0.0:

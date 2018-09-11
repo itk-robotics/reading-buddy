@@ -9,9 +9,9 @@ uuid="readingbuddy001"
 import sys
 import os
 import qi
-from flask import Flask, render_template, request
+#from flask import Flask, render_template, request
 
-flaskapp = Flask(__name__)
+#flaskapp = Flask(__name__)
 
 
 #from utilities.sendMail import choregrapheMail
@@ -71,24 +71,6 @@ class PythonAppMain(object):
         self.notification = self.session.service("ALNotificationManager")
 
 
-<<<<<<< HEAD
-        # Do not load html content?
-        # For readingbuddy: use LOG for prototype
-        if False:
-            try:
-                folder = os.path.basename(os.path.dirname(os.path.realpath(__file__)))
-                self.ts = self.session.service("ALTabletService")
-                self.ts.loadApplication(folder) #may be disrupted if launched before or simultaniously with ALAutonomousLife.setState('interactive')
-                print "ts.loadApplication(folder)= " + folder
-                self.ts.showWebview()
-                self.logger.info("Tablet loaded!")
-            except Exception, e:
-                self.logger.error(e)
-                self.notification.add(
-                    {"message": "loading error. I cant use my tablet", "severity": "warning", "removeOnRead": True})
-                _strMessage = __file__ + "\n" + "Exception occurred on " + str(datetime.datetime.now()) + "\n" + str(e)
-                self.systemMail.sendMessage(_strMessage)
-=======
         try:
             folder = os.path.basename(os.path.dirname(os.path.realpath(__file__)))
             self.ts = self.session.service("ALTabletService")
@@ -102,8 +84,6 @@ class PythonAppMain(object):
                 {"message": "loading error. I cant use my tablet", "severity": "warning", "removeOnRead": True})
             _strMessage = __file__ + "\n" + "Exception occurred on " + str(datetime.datetime.now()) + "\n" + str(e)
             #self.systemMail.sendMessage(_strMessage)
->>>>>>> feature/flexible_html
-
 
 
         #Do not prepare face led group

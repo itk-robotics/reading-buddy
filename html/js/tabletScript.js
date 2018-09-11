@@ -48,7 +48,7 @@
 
 
     function showFactCallback(args) {
-        console.log("a new fact has been triggered:");
+        console.log("a new string has been triggered:");
         console.log(args);
         document.getElementById("factBox").style.opacity="1";
         document.getElementById("factTitle").innerHTML = args;

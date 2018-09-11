@@ -15,13 +15,15 @@ flaskapp = Flask(__name__)
 
 
 #from utilities.sendMail import choregrapheMail
-#from time import time, sleep
+from time import time, sleep
 #import datetime
 #import random
 #import threading
 
 #startLock = threading.Lock()
 DEBUG = True
+CONNECTION_NOTIFICATION = "internet connection offline"
+PORT=5000
 """when debug is true: people are ignored by autonomous life. Head touch triggers monologue"""
 
 OPTIONAL_NET_CONNECTON = False #If set to False, then internet connection is required.
@@ -44,6 +46,7 @@ class PythonAppMain(object):
         self.motion = self.session.service("ALMotion")
         self.posture = self.session.service("ALRobotPosture")
         self.beman = self.session.service("ALBehaviorManager")
+        self.conman = self.session.service("ALConnectionManager")
         #self.mail = choregrapheMail()
         #self.systemMail = self.mail
         self.audio = self.session.service("ALAudioPlayer")
@@ -68,22 +71,19 @@ class PythonAppMain(object):
         self.notification = self.session.service("ALNotificationManager")
 
 
-        # Do not load html content.
-        # For readingbuddy: use LOG for prototype
-        if False:
-            try:
-                folder = os.path.basename(os.path.dirname(os.path.realpath(__file__)))
-                self.ts = self.session.service("ALTabletService")
-                self.ts.loadApplication(folder) #may be disrupted if launched before or simultaniously with ALAutonomousLife.setState('interactive')
-                print "ts.loadApplication(folder)= " + folder
-                self.ts.showWebview()
-                self.logger.info("Tablet loaded!")
-            except Exception, e:
-                self.logger.error(e)
-                self.notification.add(
-                    {"message": "loading error. I cant use my tablet", "severity": "warning", "removeOnRead": True})
-                _strMessage = __file__ + "\n" + "Exception occurred on " + str(datetime.datetime.now()) + "\n" + str(e)
-                self.systemMail.sendMessage(_strMessage)
+        try:
+            folder = os.path.basename(os.path.dirname(os.path.realpath(__file__)))
+            self.ts = self.session.service("ALTabletService")
+            self.ts.loadApplication(folder) #may be disrupted if launched before or simultaniously with ALAutonomousLife.setState('interactive')
+            print "ts.loadApplication(folder)= " + folder
+            self.ts.showWebview()
+            self.logger.info("Tablet loaded!")
+        except Exception, e:
+            self.logger.error(e)
+            self.notification.add(
+                {"message": "loading error. I cant use my tablet", "severity": "warning", "removeOnRead": True})
+            _strMessage = __file__ + "\n" + "Exception occurred on " + str(datetime.datetime.now()) + "\n" + str(e)
+            #self.systemMail.sendMessage(_strMessage)
 
 
 
@@ -109,20 +109,39 @@ class PythonAppMain(object):
         self.audio.playSoundSetFile('sfx_confirmation_1')
         print "DEBUG = " + str(DEBUG)
 
-        """
-        #TODO make separate function
-        except Exception as e:
-            self.logger.error(e)
-            _strMessage = __file__ + "\n" + "Exception occurred on " + str(datetime.datetime.now()) + "\n" + str(e)
-            self.systemMail.sendMessage, _strMessage  # TODO send async?
-            self.stop_app
-        """
+
+        while self.internetOk() != True:
+            print "INTERNET PROBLEM"
+            self.memory.raiseEvent("memShowString", "WiFi: " + str(self.conman.state()))  # optional, displayed on tablet
+            sleep(3)
+
+        _start_time = time()
+        try:
+            self.memory.raiseEvent("memShowString", "Undersøger WiFi... ")
+            self.conman.scan()
+        except Exception, e:
+            print "ConnectionManager scan failed"
+            self.memory.raiseEvent("memShowString", "Kunne ikke hente WiFi oplysninger")
+            self.stop_app()
+
+        services = self.conman.services()
+        print ("conman time: " + str(time()-_start_time))
+        for service in services:
+            network = dict(service)
+            if network['State'] == "online":
+                _name = network['Name']
+                _address =  network['IPv4'][1][1] #'IPv4': [['Method', 'dhcp'], ['Address', '192.168.8.100'], ...
+
+        self.memory.raiseEvent("memShowString",
+                               "WiFi: " + _name + "<br>Bogreol: " + _address+":"+PORT)
 
         STORY = "story_1" + os.sep #dir name
 
         @flaskapp.route('/')
         @flaskapp.route('/index')
         def index():
+            self.ts.hideWebview()
+            self.logger.info("hide web view")
             user = {'username': 'Miguel'}
             posts = [
                 {
@@ -423,7 +442,7 @@ class PythonAppMain(object):
         [['id', 2], ['message', 'internet connection offline'], ['severity', 'warning'], ['removeOnRead', True]]
         """
         if OPTIONAL_NET_CONNECTON == True:
-            return True
+            return True #do nothing.
 
         intNotificationID = 0
 
@@ -432,19 +451,19 @@ class PythonAppMain(object):
             # list is not empty
             for sublist in list:
                 for subsublist in sublist:
-                    if 'internet connection offline' in subsublist:
+                    if CONNECTION_NOTIFICATION in subsublist:
                         intNotificationID = sublist[0][1]
 
-        if self.session.service("ALConnectionManager").state() == 'online':
+        if self.conman.state() == 'online':
             self.logger.info("internet connection online")
             if intNotificationID != 0:
                 self.notification.remove(intNotificationID)
             return True
         else:
             #connection not online
-            self.logger.info("internet connection offline")
+            self.logger.info(CONNECTION_NOTIFICATION)
             if intNotificationID == 0:
-                self.notification.add({"message": "internet connection offline", "severity": "warning", "removeOnRead": True})
+                self.notification.add({"message": CONNECTION_NOTIFICATION, "severity": "warning", "removeOnRead": True})
             return False
 
     @qi.nobind
@@ -503,7 +522,7 @@ if __name__ == "__main__":
     service_instance = PythonAppMain(app)
     service_id = app.session.registerService(service_instance.service_name, service_instance)
     service_instance.start_app()
-    flaskapp.run(host='0.0.0.0', port=5000)  # start flask
+    flaskapp.run(host='0.0.0.0', PORT)  # start flask
     app.run()
 
 

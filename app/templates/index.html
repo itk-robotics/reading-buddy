@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h1>Vælg historie</h1>
+        </div>
+    </div>
+    <div class="row">
+        {% for story in stories %}
+            <div class="col-3">
+                <a href="">
+                    <img src="{{ story.cover_url }}" alt="{{ story.title }}" class="img-fluid">
+                    {{ story.title }}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    
+{% endblock %}

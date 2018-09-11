@@ -68,7 +68,7 @@ class PythonAppMain(object):
         self.notification = self.session.service("ALNotificationManager")
 
 
-        # Do not load html content.
+        # Do not load html content?
         # For readingbuddy: use LOG for prototype
         if False:
             try:

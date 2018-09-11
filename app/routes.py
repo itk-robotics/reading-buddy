@@ -1,6 +1,7 @@
 from flask import render_template
 from flask import request
 from app import app
+import json
 
 @app.route('/')
 @app.route('/index')
@@ -24,5 +25,16 @@ def index():
 
 @app.route('/story')
 def story():
-    story = request.args.get('data_url', None)
-    return render_template('story.html', title='Bog 1', story=story)
+    return render_template('story.html', title='story')
+
+@app.route('/page')
+def page():
+    return render_template('page.html', title='page')
+
+@app.route('/choice')
+def choice():
+    return render_template('choice.html', title='choice')    
+
+@app.route('/question')
+def question():
+    return render_template('question.html', title='question')    

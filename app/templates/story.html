@@ -3,18 +3,10 @@
 {% block content %}
     <div class="row">
         <div class="col">
-            <p>Here comes the story</p>
-
+            <img src="//placehold.it/200x300&text=bog1" alt="">
+            <h1>{{ story.title }}</h1>
+            <p class="lead">{{ story.byline }}</p>
+            <button href="">Næste side ></button>
         </div>
-    </div>
-    <div class="row">
-        {% for story in stories %}
-            <div class="col-3">
-                <a href="{{ url_for('story', data='data_url') }}">
-                    <img src="{{ story.cover_url }}" alt="{{ story.title }}" class="img-fluid">
-                    {{ story.title }}
-                </a>
-            </div>
-        {% endfor %}
     </div>
 {% endblock %}

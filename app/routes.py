@@ -13,27 +13,18 @@ stories = [
             'data_url': 'static/stories/book2/book2.json'
         },
     ]
-<<<<<<< Updated upstream
-    with app.open_resource('static/stories/book1/book1.json') as f:
-        data = json.load(f)
-    return render_template('index.html', title='Robotten min laesemakker', stories=stories, data=data)
-=======
 
 @app.route('/')
 @app.route('/index')
 def index():
     
-    return render_template('index.html', title='Robotten min laesemakker', stories=stories )
->>>>>>> Stashed changes
+    with app.open_resource('static/stories/book1/book1.json') as f:
+        data = json.load(f)
+    return render_template('index.html', title='Robotten min laesemakker', stories=stories, data=data)
 
 @app.route('/story')
 def story():
     story_id = request.args.get('story', None)
-<<<<<<< Updated upstream
-=======
-    print story_id
-    
->>>>>>> Stashed changes
     return render_template('story.html', title='story', story_id=story_id )
 
 @app.route('/page')
@@ -46,9 +37,8 @@ def choice():
 
 @app.route('/question')
 def question():
-    return render_template('question.html', title='question')
+    return render_template('question.html', title='question')    
 
 
-
-#def story_parse()
+# def something():
 #    print stories[0].keys()[story_id][1]

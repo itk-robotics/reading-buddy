@@ -1,22 +1,32 @@
+from __future__ import print_function #Todo delete. USED FOR logging 
 from flask import render_template
 from flask import request
 from app import app
 import json
 
+import sys
+
 stories = ['static/stories/book1/book1.json',
            'static/stories/book2/book2.json']
+data = None
 
 @app.route('/')
 @app.route('/index')
 def index():
-    
+    global data
+    print('index', file=sys.stdout)
     with app.open_resource('static/stories/book1/book1.json') as f:
         data = json.load(f)
     return render_template('index.html', title='Robotten min laesemakker', stories=stories, data=data)
 
 @app.route('/story')
 def story():
+    global data
+    print('story', file=sys.stdout)
     story_id = request.args.get('story', None)
+    print('story_id = ' + str(story_id), file=sys.stdout)
+    print('json data', file=sys.stdout)
+    print(data, file=sys.stdout)
     return render_template('story.html', title='story', story_id=story_id )
 
 @app.route('/page')
@@ -32,5 +42,7 @@ def question():
     return render_template('question.html', title='question')    
 
 
-# def something():
-#    print stories[0].keys()[story_id][1]
+ def parse_story_json():
+    global data
+    print data[0].keys()[story_id][1]
+

@@ -33,11 +33,11 @@ def story():
 
 @app.route('/page')
 def page():
-    story_id = int(request.args.get('story', None))
-    my_story = story_data[story_id]
-    chapter = int(request.args.get('chapter', None))
-    page = int(request.args.get('page', None))
-    return render_template('page.html', title='page', story_data=my_story, story_id=story_id, chapter=current_chapter, page=current_page)
+    #from json: chapters -> pages -> content
+    #check for animations.
+    
+    return render_template('page.html', title='page', content = )
+
 
 @app.route('/choice')
 def choice():

@@ -7,27 +7,25 @@
             "number" : "1",
             "pages" : [
                 {
+                    "animation" : "animations/Stand/Sky_01",
                     "content" : [
                         {
                             "chapter_title" : "Chapter title 1",
-                            "text" : "Page one paragraph one in chapter one",
-                            "animation" : "animations/Stand/Sky_01"
+                            "text" : "Page one paragraph one in chapter one"
                         },
                         {
-                            "text" : "Page one paragraph two in chapter one",
-                            "animation" : "animations/Stand/Sky_01"
+                            "text" : "Page one paragraph two in chapter one"
                         }
                     ]
                 },
                 {
+                    "animation" : "animations/Stand/Sky_01",
                     "content" : [
                         {
-                            "text" : "Page two paragraph one in chapter one",
-                            "animation" : "animations/Stand/Sky_01"
+                            "text" : "Page two paragraph one in chapter one"
                         },
                         {
-                            "text" : "Page two paragraph two in chapter one",
-                            "animation" : "animations/Stand/Sky_01"
+                            "text" : "Page two paragraph two in chapter one"
                         }
                     ]
                 }

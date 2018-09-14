@@ -3,16 +3,8 @@ from flask import request
 from app import app
 import json
 
-stories = [
-        {   
-            'id' : '1',
-            'data_url': 'static/stories/book1/book1.json'
-        },
-        {   
-            'id' : '2',
-            'data_url': 'static/stories/book2/book2.json'
-        },
-    ]
+stories = ['static/stories/book1/book1.json',
+           'static/stories/book2/book2.json']
 
 @app.route('/')
 @app.route('/index')

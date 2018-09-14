@@ -4,29 +4,32 @@ from flask import render_template
 from flask import request
 from app import app
 import json
+import os
 
 import sys
 
 stories = ['static/stories/book1/book1.json',
-           'static/stories/book2/book2.json']
+           'static/stories/book2/book2.json'] #TODO import list of stories from config file
 
 story_data = []
-for story_json in stories:
-    with app.open_resource(story_json) as f:
-        json_data = json.load(f)
-    story_data.append(json_data)
+story_id = -1
+my_story = None
+json_path = ""
 
 @app.route('/')
 @app.route('/index')
 def index():
+    for story_path in stories:
+        story_data.append(read_json(story_path))
     return render_template('index.html', title='Robotten min laesemakker', story_data=story_data, )
 
 @app.route('/story')
 def story():
     story_id = int(request.args.get('story', None))
-    my_story = story_data[story_id]
-    print(stories[story_id], file=sys.stdout)
-    return render_template('story.html', title='story', story_data=my_story, story_id=story_id)
+    json_path = stories[story_id]
+    fprint(json_path)
+    json_path = json_path.rsplit('/',1)[0] #cut off *.json in path
+    return render_template('story.html', title='story', story_data=my_story, story_id=story_id, story_path=json_path)
 
 @app.route('/page')
 def page():
@@ -41,6 +44,9 @@ def question():
     return render_template('question.html', title='question')    
 
 
-#def parse_story_json():
-    #print data[0].keys()[story_id][1]
-
+def read_json(path):
+    with app.open_resource(path) as f:
+        return json.load(f)
+            
+def fprint(data):
+    print(data, file=sys.stdout)

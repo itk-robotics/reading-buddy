@@ -10,14 +10,24 @@ stories = ['static/stories/book1/book1.json',
            'static/stories/book2/book2.json']
 data = None
 
+story_data = []
+for story_json in stories:
+    with app.open_resource(story_json) as f:
+        json_data = json.load(f)
+    story_data.append(json_data)
+
 @app.route('/')
 @app.route('/index')
 def index():
+<<<<<<< HEAD
     global data
     print('index', file=sys.stdout)
     with app.open_resource('static/stories/book1/book1.json') as f:
         data = json.load(f)
     return render_template('index.html', title='Robotten min laesemakker', stories=stories, data=data)
+=======
+    return render_template('index.html', title='Robotten min laesemakker', story_data=story_data)
+>>>>>>> 334e2db4cd893f35f72ff7939a80a7ff79a925b1
 
 @app.route('/story')
 def story():

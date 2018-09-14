@@ -1,6 +1,6 @@
 {
-    "title" : "Book number 1 Title",
-    "author" : "Artur Author",
+    "title" : "Book number 2 Title",
+    "author" : "Benjamin Author",
     "cover_image" : "/assets/images/cover.jpg",
     "chapters" : [
         {

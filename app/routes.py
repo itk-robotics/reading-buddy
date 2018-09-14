@@ -1,4 +1,5 @@
-from __future__ import print_function #Todo delete. USED FOR logging 
+from __future__ import print_function
+import sys
 from flask import render_template
 from flask import request
 from app import app
@@ -18,15 +19,14 @@ for story_json in stories:
 @app.route('/')
 @app.route('/index')
 def index():
-    global data
-    print('index', file=sys.stdout)
-    with app.open_resource('static/stories/book1/book1.json') as f:
-        data = json.load(f)
-    return render_template('index.html', title='Robotten min laesemakker', story_data=story_data)
+    return render_template('index.html', title='Robotten min laesemakker', story_data=story_data, )
 
 @app.route('/story')
 def story():
-    return render_template('story.html', title='story', story_id=story_id )
+    story_id = int(request.args.get('story', None))-1
+    my_story = story_data[story_id]
+    print(stories[story_id], file=sys.stdout)
+    return render_template('story.html', title='story', story_data=my_story)
 
 @app.route('/page')
 def page():

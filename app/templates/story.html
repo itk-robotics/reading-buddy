@@ -3,10 +3,9 @@
 {% block content %}
     <div class="row">
         <div class="col">
-            <img src="//placehold.it/200x300&text=bog1" alt="">
-            <h1>{{ story.title }}</h1>
-            <p class="lead">{{ story.byline }}</p>
+            <img src="//placehold.it/150x300&text={{ story_id }}" alt="">
             <button href="">Næste side ></button>
         </div>
     </div>
+    {{ data }}
 {% endblock %}

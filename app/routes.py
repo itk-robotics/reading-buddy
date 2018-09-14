@@ -6,13 +6,16 @@ import json
 stories = ['static/stories/book1/book1.json',
            'static/stories/book2/book2.json']
 
+story_data = []
+for story_json in stories:
+    with app.open_resource(story_json) as f:
+        json_data = json.load(f)
+    story_data.append(json_data)
+
 @app.route('/')
 @app.route('/index')
 def index():
-    
-    with app.open_resource('static/stories/book1/book1.json') as f:
-        data = json.load(f)
-    return render_template('index.html', title='Robotten min laesemakker', stories=stories, data=data)
+    return render_template('index.html', title='Robotten min laesemakker', story_data=story_data)
 
 @app.route('/story')
 def story():

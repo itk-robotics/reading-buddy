@@ -7,11 +7,11 @@
         </div>
     </div>
     <div class="row">
-        {% for story in stories %}
+        {% for story in story_data %}
             <div class="col-4">
-                <a href="{{ url_for('story', story=story.id) }}">
-                    <img src="//placehold.it/150x300&text={{ story.id }}" alt="{{ story.id }}" class="img-fluid">
-                    {{ story.data_url }}
+                <a href="{{ url_for('story', story=loop.index) }}">
+                    <img src="static/stories/book{{loop.index}}/{{ story.cover_image }}" alt="{{ story.title }}" class="img-fluid">
+                    {{ story.title }}
                 </a>
             </div>
         {% endfor %}

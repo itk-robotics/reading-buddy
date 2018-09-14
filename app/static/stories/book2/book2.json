@@ -1,0 +1,40 @@
+{
+    "title" : "Book number 1 Title",
+    "author" : "Artur Author",
+    "cover_image" : "/assets/images/cover.jpg",
+    "chapters" : [
+        {
+            "number" : "1",
+            "pages" : [
+                {
+                    "content" : [
+                        {
+                            "chapter_title" : "Chapter title 1",
+                            "text" : "Page one paragraph one in chapter one",
+                            "animation" : "animations/Stand/Sky_01"
+                        },
+                        {
+                            "text" : "Page one paragraph two in chapter one",
+                            "animation" : "animations/Stand/Sky_01"
+                        }
+                    ]
+                },
+                {
+                    "content" : [
+                        {
+                            "text" : "Page two paragraph one in chapter one",
+                            "animation" : "animations/Stand/Sky_01"
+                        },
+                        {
+                            "text" : "Page two paragraph two in chapter one",
+                            "animation" : "animations/Stand/Sky_01"
+                        }
+                    ]
+                }
+            ],
+            "question" : "Question for chapter one ",
+            "choice_1" : "Choice 1",
+            "choice_2" : "Choice 2"
+        }
+    ]     
+}

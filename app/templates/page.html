@@ -3,14 +3,15 @@
 {% block content %}
     <div class="row">
         <div class="col">
-            <p>Here comes the story</p>
-            <p>Here comes the story</p>
-            <p>Here comes the story</p>
-            <p>Here comes the story</p>
-            <p>Here comes the story</p>
+            {% if content.title %}
+                <h2>{{ content.title }}</h2>
+            {% endif %}
+            {% for paragraph in content %}
+                <p>{{ paragraph.text }}</p>
+            {% endfor %}
         </div>
         <div class="col align-self-end align-self-baseline">
-            <a href="#" class="btn btn-primary">Næste side ></a>
+            <a href="{{ url_for('story', story=story.id) }}" class="btn btn-primary">Næste side ></a>
         </div>
     </div>
 {% endblock %}

@@ -17,15 +17,13 @@ def index():
             'data_url': 'static/stories/book2/book2.json'
         },
     ]
-    # with app.open_resource('static/stories/book1/book1.json') as f:
-    #    data = json.load(f)
-    return render_template('index.html', title='Robotten min laesemakker', stories=stories )
+    with app.open_resource('static/stories/book1/book1.json') as f:
+        data = json.load(f)
+    return render_template('index.html', title='Robotten min laesemakker', stories=stories, data=data)
 
 @app.route('/story')
 def story():
     story_id = request.args.get('story', None)
-    #response = requests.get("static/stories/drageridderen/drageridderen.json")
-    #todos = json.loads(response.text)
     return render_template('story.html', title='story', story_id=story_id )
 
 @app.route('/page')

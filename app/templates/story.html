@@ -3,10 +3,10 @@
 {% block content %}
     <div class="row">
         <div class="col">
-            <img src="static/stories/book1/{{ story_data.cover_image }}" alt="{{ story_data.title }}">
+            <img class="img-fluid" src="static/stories/book1/{{ story_data.cover_image }}" alt="{{ story_data.title }}">
             <h1>{{ story_data.title }}</h1>
             <p class="lead">{{ story_data.author }}</p>
-            <a href="" class="btn btn-primary">Næste side ></a>
+            <a href="{{ url_for('page', story=story_id) }}" class="btn btn-primary">Næste side ></a>
         </div>
     </div>
 {% endblock %}

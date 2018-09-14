@@ -23,10 +23,10 @@ def index():
 
 @app.route('/story')
 def story():
-    story_id = int(request.args.get('story', None))-1
+    story_id = int(request.args.get('story', None))
     my_story = story_data[story_id]
     print(stories[story_id], file=sys.stdout)
-    return render_template('story.html', title='story', story_data=my_story)
+    return render_template('story.html', title='story', story_data=my_story, story_id=story_id)
 
 @app.route('/page')
 def page():

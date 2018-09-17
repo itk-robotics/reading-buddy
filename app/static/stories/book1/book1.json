@@ -2,6 +2,8 @@
     "title" : "Book number 1 Title",
     "author" : "Artur Author",
     "cover_image" : "/assets/images/cover.jpg",
+    "into" : "STRING OR PATH",
+    "outtro" : "STRING OR PATH",
     "chapters" : [
         {
             "number" : "1",
@@ -18,8 +20,7 @@
                         }
                     ]
                 },
-                {
-                    "animation" : "animations/Stand/Sky_01",
+                {                    
                     "content" : [
                         {
                             "text" : "Page two paragraph one in chapter one"
@@ -31,8 +32,39 @@
                 }
             ],
             "question" : "Question for chapter one ",
-            "choice_1" : "Choice 1",
-            "choice_2" : "Choice 2"
+            "choice_1" : "Choice A",
+            "choice_2" : "Choice B"
+        },
+        {
+            "number" : "2",
+            "pages" : [
+                {
+                    "animation" : "animations/Stand/Confused_01",
+                    "content" : [
+                        {
+                            "chapter_title" : "Chapter title 2",
+                            "text" : "Page one paragraph one in chapter two"
+                        },
+                        {
+                            "text" : "Page one paragraph two in chapter two"
+                        }
+                    ]
+                },
+                {
+                    "animation" : "animations/Stand/Greet_01",
+                    "content" : [
+                        {
+                            "text" : "Page two paragraph one in chapter two"
+                        },
+                        {
+                            "text" : "Page two paragraph two in chapter two"
+                        }
+                    ]
+                }
+            ],
+            "question" : "Question for chapter two ",
+            "choice_1" : "Choice C",
+            "choice_2" : "Choice D"
         }
     ]     
 }

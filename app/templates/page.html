@@ -2,18 +2,6 @@
 
 {% block content %}
 
-    {% for pages in story_data.chapters[0] %}
-    {{pages.content}}
-        {% for content in pages %}
-            
-            {% if content.chapter_title %}
-                <h2>{{ content.chapter_title }}</h2>
-            {% endif %}
-            {% for text in content %}
-                <p>{{ text }}</p>
-            {% endfor %}
-        {% endfor %}
-    {% endfor %}
     <div class="row">
         <div class="col">
 

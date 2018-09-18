@@ -8,17 +8,6 @@ import os
 
 import sys
 
-stories = ['static/stories/book1/book1.json',
-           'static/stories/book2/book2.json'] #TODO import list of stories from config file
-
-story_data = []
-story_id = -1
-my_story = None
-json_path = ""
-chapter = -1
-page = -1
-animation = ["type","synchronicity", "path"] #e.g. ["say", 'async', "animations/Stand/Sky_01"]
-active_story = "" #dict from json
 
 @app.route('/')
 @app.route('/index')
@@ -35,7 +24,7 @@ def story():
     json_path = stories[story_id]
     fprint(json_path)
     json_path.rsplit('/',1)[0] #cut off *.json in path.
-    init_story(json_path)
+    init_story(json_path) #set active_story
     return render_template('story.html', title='story', story_data=my_story, story_id=story_id, story_path=json_path.rsplit('/',1)[0])
 
 @app.route('/page')
@@ -118,3 +107,18 @@ def story_tracker():
 
     return ["content", page_content]
 
+
+stories = os.listdir('app/static/stories') #subfile-, and dir names in the stories dir
+#fprint("stories from json file: " + str(stories) + ".\nExpecting type list; " + str(type(stories)))
+
+for idx, book in enumerate(stories): #expected format: #stories = ['static/stories/book1/book1.json', 'static/stories/book2/book2.json']
+    stories[idx] = "static/stories/%s/%s.json" %(book, book)
+
+story_data = []
+story_id = -1
+my_story = None
+json_path = ""
+chapter = -1
+page = -1
+animation = ["type","synchronicity", "path"] #e.g. ["say", 'async', "animations/Stand/Sky_01"]
+active_story = "" #dict from json

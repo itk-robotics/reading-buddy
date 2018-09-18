@@ -6,15 +6,13 @@ from app import app
 import json
 import os
 
-import sys
-
-
 @app.route('/')
 @app.route('/index')
 def index():
+    json_path = stories[story_id]
     for story_path in stories:
         story_data.append(read_json(story_path))
-    return render_template('index.html', title='Robotten min laesemakker', story_data=story_data, )
+    return render_template('index.html', title='Robotten min laesemakker', story_data=story_data, story_path=json_path.rsplit('/',1)[0])
 
 @app.route('/story')
 def story():
@@ -24,8 +22,8 @@ def story():
     json_path = stories[story_id]
     fprint(json_path)
     json_path.rsplit('/',1)[0] #cut off *.json in path.
-    init_story(json_path) #set active_story
-    return render_template('story.html', title='story', story_data=my_story, story_id=story_id, story_path=json_path.rsplit('/',1)[0])
+    init_story(json_path)
+    return render_template('story.html', title='story', story_data=story_data, story_id=story_id, story_path=json_path.rsplit('/',1)[0])
 
 @app.route('/page')
 def page():
@@ -37,7 +35,7 @@ def page():
     fprint("page content:")
     fprint(page_content)
     
-    return render_template('page.html', title='page', content = page_content)
+    return render_template('page.html', title='page', content=page_content, story_id=story_id)
 
 
 @app.route('/choice')

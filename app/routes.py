@@ -106,11 +106,8 @@ def story_tracker():
     return ["content", page_content]
 
 
-stories = os.listdir('app/static/stories') #subfile-, and dir names in the stories dir
+stories = next(os.walk('app/static/stories/'))[1] #subfile-, and dir names in the stories dir
 #fprint("stories from json file: " + str(stories) + ".\nExpecting type list; " + str(type(stories)))
-
-#TODO DELETE HOTFIX
-stories = ['book1', 'book2']
 
 for idx, book in enumerate(stories): #expected format: #stories = ['static/stories/book1/book1.json', 'static/stories/book2/book2.json']
     stories[idx] = "static/stories/%s/%s.json" %(book, book)

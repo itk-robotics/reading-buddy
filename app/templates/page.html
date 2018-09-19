@@ -1,13 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-
     <div class="row">
-        <div class="col">
-
-        </div>
-        <div class="col align-self-end align-self-baseline">
-            <a href="{{ url_for('page', story=story_id, chapter=current_chapter, page=current_page) }}" class="btn btn-primary">Næste side ></a>
+        <div class="col">          
+            {% for paragraphs in content %}
+                {% for text in paragraphs %}
+                    {% if text.chapter_title %}
+                        <h2>{{ text.chapter_title }}</h2>
+                    {% endif %}
+                    <p>{{ text.text }}</p>
+                {% endfor %}
+            {% endfor %}
+            {% if content.page == "lastpage" %}
+                
+                <a href="{{ url_for('question', story=story_id) }}" class="btn btn-primary">Næste side ></a>
+            {% else %}
+                <a href="{{ url_for('page', story=story_id) }}" class="btn btn-primary">Næste side ></a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

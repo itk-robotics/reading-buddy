@@ -2,20 +2,21 @@
 
 {% block content %}
     <div class="row">
-        <div class="col">          
-            {% for paragraphs in content %}
-                {% for text in paragraphs %}
-                    {% if text.chapter_title %}
-                        <h2>{{ text.chapter_title }}</h2>
-                    {% endif %}
-                    <p>{{ text.text }}</p>
-                {% endfor %}
+        <div class="col">
+            {% for text in content %}
+                {% if text.chapter_title %}
+                    <h2>{{ text.chapter_title }}</h2>
+                {% endif %}
+                <p>{{ text.text }}</p>
             {% endfor %}
-            {% if content.page == "lastpage" %}
-                
+            {% if lastpage == True %}
                 <a href="{{ url_for('question', story=story_id) }}" class="btn btn-primary">Næste side ></a>
             {% else %}
-                <a href="{{ url_for('page', story=story_id) }}" class="btn btn-primary">Næste side ></a>
+                {% if theend == False %}
+                    <a href="{{ url_for('page', story=story_id) }}" class="btn btn-primary">Næste side ></a>
+                {% else %}
+                    <a href="{{ url_for('index', story=story_id) }}" class="btn btn-primary">Slut ></a>
+                {% endif %}
             {% endif %}
         </div>
     </div>

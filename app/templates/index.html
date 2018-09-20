@@ -10,7 +10,7 @@
         {% for story in story_data %}
             <div class="col-4">
                 <a href="{{ url_for('story', story=loop.index-1) }}">
-                    <img src="{{ story_path }}/{{ story.cover_image }}" alt="{{ story.title }}" class="img-fluid">
+                    <img src="{{ story_path[loop.index-1] }}{{ story.cover_image }}" alt="{{ story.title }}" class="img-fluid">
                     {{ story.title }}
                 </a>
             </div>

@@ -3,8 +3,9 @@
 {% block content %}
     <div class="row">
         <div class="col">
-            <h2>Spørgsmål?</h2>
-            <a href="#" class="btn btn-primary">Fortsæt historien ></a>
+            <h1> {{question}} </h1>
+            <a href="{{ url_for('choice', story=story_id, choice=choice_1) }}" class="btn btn-primary">{{choice_1}}</a>
+            <a href="{{ url_for('choice', story=story_id, choice=choice_2) }}" class="btn btn-primary">{{choice_2}}</a>
         </div>
     </div>
 {% endblock %}

@@ -1,3 +1,4 @@
+"""
 from __future__ import print_function #for debugging
 import sys
 import os
@@ -77,7 +78,7 @@ def choice():
 
 
 
-""""*** utilities ***"""
+#*** utilities ***
 
 
 def read_json(path):
@@ -192,3 +193,4 @@ def story_tracker_deprecate(): #todo delete
 
     return ["content", page_content]
 
+"""

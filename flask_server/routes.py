@@ -4,14 +4,12 @@ import os
 sys.path.insert(0, os.getcwd()+'/../packages') #TODO DELETE /..
 from flask import render_template
 from flask import request
-from app import app
+from flask_server import flaskapp
 import json
 
-@app.route('/')
-@app.route('/index')
+@flaskapp.route('/')
+@flaskapp.route('/index')
 def index():
-
-
 
     #fprint("story_data before return")
     #fprint(story_data)
@@ -20,7 +18,7 @@ def index():
 
     return render_template('index.html', title='Robotten min laesemakker', story_data=story_data, story_path=_json_paths)
 
-@app.route('/story')
+@flaskapp.route('/story')
 def story():
     global story_data, story_id, my_story, json_path, current_chapter, current_page, animation, the_end
 
@@ -32,7 +30,7 @@ def story():
     init_story(json_path)
     return render_template('story.html', title='story', story_data=story_data, story_id=story_id, story_path=json_path.rsplit('/',1)[0])
 
-@app.route('/page')
+@flaskapp.route('/page')
 def page():
     global story_data, story_id, my_story, json_path, current_chapter, current_page, animation, active_story, last_page, the_end
 
@@ -53,7 +51,7 @@ def page():
     return render_template('page.html', title='page', content=page_content, story_id=story_id, lastpage = last_page, theend=the_end)
 
 
-@app.route('/question')
+@flaskapp.route('/question')
 def question():
     global story_data, story_id, my_story, json_path, current_chapter, current_page, animation, active_story, last_page
 
@@ -64,7 +62,7 @@ def question():
     return render_template('question.html', title='question', question=question, choice_1=choice_1, choice_2=choice_2)
 
 
-@app.route('/choice')
+@flaskapp.route('/choice')
 def choice():
     global story_data, story_id, my_story, json_path, current_chapter, current_page, animation, active_story, last_page
 
@@ -83,7 +81,7 @@ def choice():
 
 
 def read_json(path):
-    with app.open_resource(path) as f:
+    with flaskapp.open_resource(path) as f:
         return json.load(f)
 
 def fprint(data):
@@ -116,7 +114,7 @@ def next_page():
     #fprint("number of pages in current chapter:")
     #fprint(len(active_story['chapters'][current_chapter]['pages']))
 
-stories = next(os.walk('app/static/stories/'))[1] #subfile-, and dir names in the stories dir
+stories = next(os.walk('flask_server/static/stories/'))[1] #subfile-, and dir names in the stories dir
 #fprint("stories from json file: " + str(stories) + ".\nExpecting type list; " + str(type(stories)))
 
 for idx, book in enumerate(stories):

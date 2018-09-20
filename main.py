@@ -23,7 +23,7 @@ from time import time, sleep
 
 
 
-DEBUG = True
+DEBUG = False
 CONNECTION_NOTIFICATION = "internet connection offline"
 PORT=5000
 """when debug is true: people are ignored by autonomous life. Head touch triggers monologue"""
@@ -167,9 +167,9 @@ class PythonAppMain(object):
         @flaskapp.route('/')
         @flaskapp.route('/index')
         def index():
-
+            self.ts.hideWebview()
             print (self._json_paths)
-
+            #qi.async(self.beman.runBehavior, "aarhustest-c0d5d9/Nedslag1") #TODO DELETE
             return render_template('index.html', title='Robotten min laesemakker', story_data=self.story_data,
                                    story_path=self._json_paths)
 
@@ -189,7 +189,15 @@ class PythonAppMain(object):
         def page():
 
             # from json: chapters -> pages -> content
-            # check for animations.
+            try:
+                #look for animations
+                page_animation = self.active_story['chapters'][self.current_chapter]['pages'][self.current_page]['animation']
+                print page_animation
+                self.beman.runBehavior(page_animation)
+
+            except:
+                print "no animation was found"
+
             if not self.the_end:
                 print ("current_page: " + str(self.current_page))
                 print ("current_chapter: " + str(self.current_chapter))
@@ -221,6 +229,7 @@ class PythonAppMain(object):
             self.user_choice = request.args.get('choice', None)
             print ("choice content, user selected: " + self.user_choice)
             print ("initiate say or animation:")
+            qi.async(self.beman.runBehavior, "aarhustest-c0d5d9/Nedslag1")
             print (self.active_story['chapters'][self.current_chapter]['options'][self.user_choice])
             self.last_page = False  # reset bool to default
             self.current_chapter = self.current_chapter + 1

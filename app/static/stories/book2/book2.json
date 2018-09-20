@@ -33,8 +33,7 @@
                 }
             ],
             "question" : "Question for chapter one ",
-            "choice_1" : "Choice 1",
-            "choice_2" : "Choice 2"
+            "options" : {"Choice A": "animation/choiceA", "Choice B": "animation/choiceB"}
         }
     ]     
 }

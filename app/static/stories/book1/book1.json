@@ -32,8 +32,7 @@
                 }
             ],
             "question" : "Question for chapter one ",
-            "choice_1" : "Choice A",
-            "choice_2" : "Choice B"
+            "options" : {"Choice A": "animation/choiceA", "Choice B": "animation/choiceB"}
         },
         {
             "number" : "2",
@@ -63,8 +62,7 @@
                 }
             ],
             "question" : "Question for chapter two ",
-            "choice_1" : "Choice C",
-            "choice_2" : "Choice D"
+            "options" : {"Choice C": "animation/choiceC", "Choice D": "animation/choiceD"}
         }
     ]     
 }

@@ -1,11 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="row">
-        <div class="col">
-            <h1> VÆLG! </h1>
-            <a href="{{ url_for('choice', story=story_id, choice=choice_1) }}" class="btn btn-primary">{{choice_1}}</a>
-            <a href="{{ url_for('choice', story=story_id, choice=choice_2) }}" class="btn btn-primary">{{choice_2}}</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 border-bottom">
+                <p class="pt-2 pb-2 mb-0 text-muted">Lyt til robotten</p>
+            </div>
+        </div>
+        <div class="row" style="height: 100%;">
+            <div class="col-12 text-center">
+                <h1 class="mt-5 mb-5">{{question}}</h1>
+            </div>
+            <div class="col-sm-6 text-center text-sm-left">
+                <a href="{{ url_for('choice', story=story_id, choice=choice_1) }}" class="btn btn-primary btn-lg btn-choice">{{choice_1}}</a>
+            </div>
+            <div class="col-sm-6 text-center text-sm-right">
+                <a href="{{ url_for('choice', story=story_id, choice=choice_2) }}" class="btn btn-primary btn-lg btn-choice">{{choice_2}}</a>
+            </div>
         </div>
     </div>
+    <img src="static/images/pepper.png" alt="Pepper" class="img-fixed-bottom">
 {% endblock %}

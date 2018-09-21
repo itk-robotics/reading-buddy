@@ -36,6 +36,8 @@ Activate the new virtual environment `source venv/bin/activate`
 
 ### Flask (Phyton framework)
 
+To run local you need to uncomment the code in `routes.py` by removing """ in to and bottom of the file.
+
 Install Flask `pip install flask`
 
 Check that flask is running - run `import flask`

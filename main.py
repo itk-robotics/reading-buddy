@@ -120,7 +120,6 @@ class PythonAppMain(object):
         self.current_page = -1
         self.active_story = ""  # dict from json
         self.last_page = False
-        self.last_page = False
         self.the_end = False
 
         self._json_paths = []

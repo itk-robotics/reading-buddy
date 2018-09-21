@@ -10,6 +10,10 @@ import sys
 import os
 import qi
 
+import codecs
+sys.stdout = codecs.getwriter('utf8')(sys.stdout) #prevent print to console from crashing on special characters
+sys.stderr = codecs.getwriter('utf8')(sys.stderr)
+
 sys.path.append(os.getcwd()+os.sep+'packages')
 from flask import render_template
 from flask import request
@@ -230,7 +234,7 @@ class PythonAppMain(object):
                 _question_animation = self.active_story['chapters'][self.current_chapter]['question_animation']
                 print _question_animation
                 sleep(3)
-                self.beman.runBehavior(_question_animation)
+                qi.async(self.beman.runBehavior, _question_animation)
 
             except:
                 print "no question_animation animation was found"
@@ -306,71 +310,6 @@ class PythonAppMain(object):
         self.intSignalIDHeadtouch = self.callbackMiddleTactile.signal.connect(self.headtouchEvent)
         #print "signal connected: self.intSignalIDHeadtouch = " + str(self.intSignalIDHeadtouch)
 
-    @qi.nobind
-    def waveAnimation(self):
-        """From head to arm"""
-        # get angle, select arm
-        #"'skip' if DEBUG == True else self.motion.stiffnessInterpolation("Head", 0, 0.1) #head stiffness off
-        self.velocity = 1
-        self.headYaw = self.motion.getAngles("HeadYaw", True)
-        self.headYaw = self.headYaw[0]  # from list to float
-        #print "head yaw = " + str(self.headYaw)
-
-        # inverse angles depeding on left or right arm.
-        if self.headYaw > 0.0:
-            self.side = "L"
-            self.mod = -1
-        else:
-            self.side = "R"
-            self.mod = 1
-
-        # prep arm
-        self.names = [self.side + "ShoulderPitch", self.side + "ShoulderRoll", self.side + "Hand",
-                      self.side + "ElbowRoll", self.side + "WristYaw"]
-        self.angles = [0.0, self.headYaw, 0.9, (2.0 * self.mod), (-1.7 * self.mod)]
-        self.motion.angleInterpolation(self.names, self.angles, self.velocity, True)
-
-        # wave loop
-        names = [self.side + "ElbowYaw"] #result: LElbowYaw / RElbowYaw
-        times = [0.4]
-        isAbsolute = False
-
-        for x in range(2):
-            # wave out
-            angles = [(0.3 * self.mod)]
-            self.motion.angleInterpolation(names, angles, times, isAbsolute)
-
-            # wave in
-            angles = [(-0.3 * self.mod)]
-            self.motion.angleInterpolation(names, angles, times, isAbsolute)
-
-        self.posture.applyPosture('Stand',0.5)
-
-    @qi.nobind
-    def eyesProcessing(self,boolToggle):
-        self.toggle = boolToggle
-        while self.toggle:
-            self.leds.rotateEyes(65280, 1, 1)
-
-        self.leds.on("FaceLeds")
-
-    @qi.nobind
-    def animatedVoiceFile(self, strPath):
-
-        """This function is portable. Given filepath f, the robot will play it with animation.
-
-        Call example:
-        strPath = os.path.dirname(os.path.abspath(__file__)) + os.sep + 'polly' + os.sep + 'speech_20170825090904153.ogg'
-        self.animatedVoiceFile(strPath)
-        """
-        #self.logger.info("animatedVoiceFile loading: " + strPath)
-        strPath = os.path.dirname(os.path.abspath(__file__)) + os.sep + 'polly' + os.sep + strPath
-        taskID = self.audio.loadFile(strPath)
-        fileSeconds = self.audio.getFileLength(taskID)
-        qi.async(self.audio.play, taskID)
-        self.animatedSpeech.say("\\pau=" + str(int(fileSeconds)) + "000\\")
-        qi.async(self.posture.applyPosture, 'Stand', 0.5) #TODO reenamble?
-        sleep(0.5)
 
     @qi.nobind
     def internetOk(self):
@@ -404,18 +343,6 @@ class PythonAppMain(object):
                 self.notification.add({"message": CONNECTION_NOTIFICATION, "severity": "warning", "removeOnRead": True})
             return False
 
-    @qi.nobind
-    def ledWheel(self, intDuration):
-        # hex to Int,0x00RRGGBB; 0x004b4bff = 4934655 (RR 0-255 -> 00-FF)
-        #self.leds.rotateEyes(4934655, intDuration, intDuration)
-        #self.leds.on("FaceLeds")
-
-        self.leds.off("FaceLeds")
-        floatWait = (float(intDuration) / 8.0)  #there are 8 led groups
-        #print "floatWait = " + str(floatWait)
-        for x in range(1,9):
-            self.leds.fadeRGB("thinkingFace"+str(x),"blue", floatWait)
-        self.leds.on("FaceLeds")
 
     @qi.nobind
     def stop_app(self):

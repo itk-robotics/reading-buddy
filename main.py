@@ -92,14 +92,6 @@ class PythonAppMain(object):
             #self.systemMail.sendMessage(_strMessage)
 
 
-        #Do not prepare face led group
-        if False:
-            # START custom speech recognition feedback
-            self.leds = self.session.service("ALLeds")
-            for x in range(1,9):
-                self.leds.createGroup("thinkingFace"+str(x), ["RightFaceLed"+str(x), "LeftFaceLed"+str(x)])
-            # STOP custom speech recognition feedback
-
         self.memory = self.session.service("ALMemory")
 
         self.callbackMiddleTactile = self.memory.subscriber('MiddleTactilTouched')
@@ -372,7 +364,7 @@ class PythonAppMain(object):
         self.memory.raiseEvent("memHideString", 1)
         self.ts.resetTablet()
         #TODO Clean subscribed signals?
-        self.leds.on("FaceLeds")
+        #self.leds.on("FaceLeds")
         self.logger.info("Cleaned!")
 
 

@@ -24,8 +24,9 @@
     <description lang="en_US">TODO</description>
    </descriptions>
    <triggerSentences>
-    <sentence lang="da_DK">læsemakker</sentence>
+    <sentence lang="da_DK">historie</sentence>
     <sentence lang="da_DK">vil du være min læsemakker</sentence>
+    <sentence lang="da_DK">læsemakker</sentence>
    </triggerSentences>
    <loadingResponses>
     <sentence lang="da_DK">læsemakker</sentence>
@@ -39,7 +40,7 @@
   <robotRequirement model="JULIETTE"/>
  </requirements>
  <services>
-  <service name="PythonAppMain" execStart="main.py" autorun="false"/>
+  <service name="PythonAppMain" autorun="false" execStart="main.py"/>
  </services>
  <executableFiles>
   <file path="main.py"/>

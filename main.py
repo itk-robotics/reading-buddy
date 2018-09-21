@@ -3,7 +3,7 @@
 """
 Author Anders Krogsager. ITK October 2017
 Main behavior for SoftBank Pepper 1.7
-uuid="readingbuddy001"
+uuid="reading_buddy"
 """
 
 import sys

@@ -65,7 +65,7 @@ class PythonAppMain(object):
         #self.perception.setTimeBeforePersonDisappears(5.0) #seconds
         #self.perception.setMaximumDetectionRange(2) #meters
         self.life.setAutonomousAbilityEnabled("All",False)
-        #self.life.setAutonomousAbilityEnabled("SpeakingMovement", True)"""http://doc.aldebaran.com/2-5/naoqi/interaction/autonomousabilities/alspeakingmovement.html"""
+        self.life.setAutonomousAbilityEnabled("SpeakingMovement", True)
         self.tracker.unregisterAllTargets()
         self.motion.setBreathEnabled("Arms",True)
         #TODO breathing chest/head?

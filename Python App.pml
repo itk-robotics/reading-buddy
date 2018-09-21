@@ -17,7 +17,6 @@
         <File name="config" src="config.py" />
         <File name="forms" src="forms.py" />
         <File name="laesemakker" src="laesemakker.py" />
-        <File name="laesemakker" src="laesemakker.pyc" />
         <File name="package" src="package.json" />
         <File name="postcss.config" src="postcss.config.js" />
         <File name="scripts" src="src/scripts/scripts.js" />
@@ -26,7 +25,6 @@
         <File name="__init__" src="utilities/__init__.py" />
         <File name="expression_watcher" src="utilities/expression_watcher.py" />
         <File name="sendMail" src="utilities/sendMail.py" />
-        <File name="tempTester" src="utilities/tempTester.py" />
         <File name="webpack.config" src="webpack.config.js" />
         <File name="yarn" src="yarn.lock" />
         <File name="__init__" src="flask_server/__init__.py" />

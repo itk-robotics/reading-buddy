@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package uuid="reading_buddy" version="1.0.0">
+<package version="1.0.0" uuid="reading_buddy">
  <names>
   <name lang="da_DK">Læsemakker</name>
   <name lang="en_US">Reading Buddy</name>
@@ -31,7 +31,6 @@
    <loadingResponses>
     <sentence lang="da_DK">læsemakker</sentence>
    </loadingResponses>
-   <autonomous/>
    <permissions/>
   </behaviorContent>
  </contents>

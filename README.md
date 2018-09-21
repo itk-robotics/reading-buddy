@@ -42,6 +42,8 @@ Check that flask is running - run `import flask`
 
 Tell flask what to import `export FLASK_APP=laesemakker.py`
 
+Enable debugmode `export FLASK_ENV=development`
+
 Run the local webserver `flask run`
 
 ## Launch the app on the robot

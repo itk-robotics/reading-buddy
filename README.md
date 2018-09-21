@@ -6,6 +6,7 @@ Instruction for setting up and running this project "Læsemakker"
 
 - Copy reading_buddy to '~/.local/share/PackageManager/apps/'
 
+
 ## Installation
 
 - N/A

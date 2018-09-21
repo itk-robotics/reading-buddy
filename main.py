@@ -120,6 +120,7 @@ class PythonAppMain(object):
         self.current_page = -1
         self.active_story = ""  # dict from json
         self.last_page = False
+        self.last_page = False
         self.the_end = False
 
         self._json_paths = []
@@ -144,10 +145,10 @@ class PythonAppMain(object):
 
         _start_time = time()
         try:
-            sleep(1) #necessary or tablet wont show? initialization delay when testing?
+            sleep(2) #necessary or tablet wont show? initialization delay when testing?
             self.memory.raiseEvent("memShowString", "Undersøger WiFi... ")
-            #self.conman.scan()
-            #TODO Enable conamn scan
+            self.conman.scan()#TODO Disble conamn scan
+
         except Exception, e:
             print "ConnectionManager scan failed"
             self.memory.raiseEvent("memShowString", "Kunne ikke hente WiFi oplysninger")
@@ -160,7 +161,7 @@ class PythonAppMain(object):
             if network['State'] == "online":
                 _name = network['Name']
                 _address =  network['IPv4'][1][1] #'IPv4': [['Method', 'dhcp'], ['Address', '192.168.8.100'], ...
-
+        sleep(2)  # necessary or tablet wont show? initialization delay when testing?
         self.memory.raiseEvent("memShowString",
                                "WiFi: " + _name + "<br>Bogreol: " + _address+":"+str(PORT))
 
@@ -182,6 +183,15 @@ class PythonAppMain(object):
             print (self.json_path)
             self.json_path.rsplit('/', 1)[0]  # cut off *.json in path.
             self.init_story(self.json_path)
+
+            try:
+                #look for intro
+                _intro_say = self.active_story['intro_say']
+                print _intro_say
+                qi.async(self.animatedSpeech.say, _intro_say)
+
+            except:
+                print "no intro_say was found"
             return render_template('story.html', title='story', story_data=self.story_data, story_id=self.story_id,
                                    story_path=self.json_path.rsplit('/', 1)[0])
 
@@ -196,14 +206,16 @@ class PythonAppMain(object):
                 self.beman.runBehavior(page_animation)
 
             except:
-                print "no animation was found"
+                print "no page-specific animation was found"
 
-            if not self.the_end:
+            if not (self.current_chapter == len(self.active_story['chapters'])):
                 print ("current_page: " + str(self.current_page))
                 print ("current_chapter: " + str(self.current_chapter))
                 page_content = self.active_story['chapters'][self.current_chapter]['pages'][self.current_page]['content']
                 self.next_page()  # increment current_page and current_chapter
             else:
+                print ("end of story")
+                self.the_end = True
                 page_content = ["the end"]
 
             # print ("page content:")
@@ -215,6 +227,14 @@ class PythonAppMain(object):
 
         @flaskapp.route('/question')
         def question():
+            try:
+                _question_animation = self.active_story['chapters'][self.current_chapter]['question_animation']
+                print _question_animation
+                sleep(3)
+                self.beman.runBehavior(_question_animation)
+
+            except:
+                print "no question_animation animation was found"
 
             question = self.active_story['chapters'][self.current_chapter]['question']
             choice_1 = self.active_story['chapters'][self.current_chapter]['options'].keys()[0]
@@ -228,11 +248,16 @@ class PythonAppMain(object):
 
             self.user_choice = request.args.get('choice', None)
             print ("choice content, user selected: " + self.user_choice)
-            print ("initiate say or animation:")
-            qi.async(self.beman.runBehavior, "aarhustest-c0d5d9/Nedslag1")
+
             print (self.active_story['chapters'][self.current_chapter]['options'][self.user_choice])
             self.last_page = False  # reset bool to default
+            print "\033[95m self.current_chapter + 1 \033[0m"
             self.current_chapter = self.current_chapter + 1
+            print "\033[95m self.current_page = 0 \033[0m"
+            self.current_page = 0
+            sleep(3)
+            qi.async(self.beman.runBehavior, self.user_choice)
+
 
             return render_template('choice.html', title='choice', choice=self.user_choice)
 
@@ -256,13 +281,16 @@ class PythonAppMain(object):
 
         if (self.current_page + 1) == len(self.active_story['chapters'][self.current_chapter]['pages']):
             print ("end of chapter")
-            self.current_page = 0
+            #print "\033[95m self.current_page = 0 \033[0m"
+            #self.current_page = 0
             self.last_page = True
 
-        if (self.current_chapter + 1) == len(self.active_story['chapters']):
-            print ("end of story")
-            self.the_end = True
 
+        #if (self.current_chapter == len(self.active_story['chapters'])):
+        #    print ("end of story")
+        #    self.the_end = True
+
+        print "\033[95m self.current_page + 1 \033[0m"
         self.current_page = self.current_page + 1
         # print "number of pages in current chapter:"
         # print len(self.active_story['chapters'][self.current_chapter]['pages'])
@@ -342,7 +370,7 @@ class PythonAppMain(object):
         fileSeconds = self.audio.getFileLength(taskID)
         qi.async(self.audio.play, taskID)
         self.animatedSpeech.say("\\pau=" + str(int(fileSeconds)) + "000\\")
-        #qi.async(self.posture.applyPosture, 'Stand', 0.5) #TODO reenamble?
+        qi.async(self.posture.applyPosture, 'Stand', 0.5) #TODO reenamble?
         sleep(0.5)
 
     @qi.nobind

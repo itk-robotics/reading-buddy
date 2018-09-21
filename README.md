@@ -4,16 +4,18 @@ Instruction for setting up and running this project "Læsemakker"
 
 ## Setup
 
-- TODO how to setup
+- Install the program with Choregraphe. Default trigger sentence is "læsemakker".
 
 ## Installation
 
-- TODO how to install
+- Install the program with Choregraphe. Default trigger sentence is "læsemakker".
 
 ## Launch the app on the robot
 
-- TODO how to launch
+- Navigate to '~/.local/share/PackageManager/apps/reading_buddy' over SSH
+- Run 'python main.py'
+- Connect a browser to book-server via the endpoints shown on Pepper's tablet.
 
 ## How to create new stories
 
-- TODO how to create new story
+- Duplicate the folder 

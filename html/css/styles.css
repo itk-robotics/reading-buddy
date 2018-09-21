@@ -1,0 +1,59 @@
+html {
+    height:100%;
+    margin: 0;
+    padding: 0;
+    background-color: #C2CFF3;
+}
+body {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+.bg-container {
+    position: fixed;
+    z-index: 0;
+    width: 1280px;
+    height: 800px;
+}
+
+
+
+/* The Overlay (background) */
+.overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */
+    height: 100%;
+    width: 100%;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0; /*slide in from the right */
+    top: 0;
+    opacity: 0;
+    background-color: rgb(255,255,255); /* Black fallback color */
+    background-color: rgba(255,255,255, 0.95); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s ease-out; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+    position: relative;
+    /*top: 25%;  25% from the top */
+    /*width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    /*margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+    font-size: 42px;
+    padding: 50px;
+}

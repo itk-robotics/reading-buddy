@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-4">
+            <img class="img-fluid" src="{{ story_path }}/{{ story_data[story_id].cover_image }}" alt="{{ story_data[story_id].title }}" class="img-fluid">
+        </div>
+        <div class="col-8">
+            <h1>{{ story_data[story_id].title }}</h1>
+            <p class="lead">{{ story_data[story_id].author }}</p>
+            <a href="{{ url_for('page', story=story_id) }}" class="btn btn-primary">Start historien</a>
+        </div>
+    </div>
+{% endblock %}

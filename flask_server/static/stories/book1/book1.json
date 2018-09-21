@@ -1,0 +1,68 @@
+{
+    "title" : "Book number 1 Title",
+    "author" : "Artur Author",
+    "cover_image" : "/assets/images/cover.jpg",
+    "into" : "STRING OR PATH",
+    "outtro" : "STRING OR PATH",
+    "chapters" : [
+        {
+            "number" : "1",
+            "pages" : [
+                {
+                    "animation" : "animations/Stand/Sky_01",
+                    "content" : [
+                        {
+                            "chapter_title" : "Chapter title 1",
+                            "text" : "Page one paragraph one in chapter one"
+                        },
+                        {
+                            "text" : "Page one paragraph two in chapter one"
+                        }
+                    ]
+                },
+                {                    
+                    "content" : [
+                        {
+                            "text" : "Page two paragraph one in chapter one"
+                        },
+                        {
+                            "text" : "Page two paragraph two in chapter one"
+                        }
+                    ]
+                }
+            ],
+            "question" : "Question for chapter one ",
+            "options" : {"Choice A": "animation/choiceA", "Choice B": "animation/choiceB"}
+        },
+        {
+            "number" : "2",
+            "pages" : [
+                {
+                    "animation" : "animations/Stand/Confused_01",
+                    "content" : [
+                        {
+                            "chapter_title" : "Chapter title 2",
+                            "text" : "Page one paragraph one in chapter two"
+                        },
+                        {
+                            "text" : "Page one paragraph two in chapter two"
+                        }
+                    ]
+                },
+                {
+                    "animation" : "animations/Stand/Greet_01",
+                    "content" : [
+                        {
+                            "text" : "Page two paragraph one in chapter two"
+                        },
+                        {
+                            "text" : "Page two paragraph two in chapter two"
+                        }
+                    ]
+                }
+            ],
+            "question" : "Question for chapter two ",
+            "options" : {"Choice C": "animation/choiceC", "Choice D": "animation/choiceD"}
+        }
+    ]     
+}

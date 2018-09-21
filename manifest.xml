@@ -1,34 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package version="1.0.0" uuid="readingbuddy001"> <!--TODO set UUID -->
+<package uuid="reading_buddy" version="1.0.0">
  <names>
-  <name lang="en_US">Reading Buddy</name> <!--TODO set name-->
+  <name lang="da_DK">Læsemakker</name>
+  <name lang="en_US">Reading Buddy</name>
  </names>
  <descriptions>
   <description lang="en_US">v0.01 reading buddy </description>
  </descriptions>
  <supportedLanguages>
-  <language>en_US</language>
+  <language>da_DK</language>
  </supportedLanguages>
  <descriptionLanguages>
-  <language>en_US</language>
+  <language>da_DK</language>
  </descriptionLanguages>
  <contents>
-  <behaviorContent path="volume">
-   <userRequestable/>
-   <nature>interactive</nature>
-   <autonomous>
-    <condition purpose="launchTrigger"><![CDATA[('RightBumperPressed' == 1) ~ 3]]></condition> <!--TODO verify -->
-   </autonomous>
-   <permissions/>
-  </behaviorContent>
-  <behaviorContent path="config">
-   <userRequestable/>
-   <nature>interactive</nature>
-   <autonomous>
-    <condition purpose="launchTrigger"><![CDATA[('LeftBumperPressed' == 1) ~ 3]]></condition> <!--TODO verify -->
-   </autonomous>
-   <permissions/>
-  </behaviorContent>
   <behaviorContent path=".">
    <userRequestable/>
    <nature>interactive</nature>
@@ -38,14 +23,24 @@
    <descriptions>
     <description lang="en_US">TODO</description>
    </descriptions>
-   <autonomous>
-    <condition purpose="launchTrigger"><![CDATA[('BackBumperPressed' == 1) ~ 3]]></condition> <!--TODO verify -->
-   </autonomous>
+   <triggerSentences>
+    <sentence lang="da_DK">historie</sentence>
+    <sentence lang="da_DK">vil du være min læsemakker</sentence>
+    <sentence lang="da_DK">læsemakker</sentence>
+   </triggerSentences>
+   <loadingResponses>
+    <sentence lang="da_DK">læsemakker</sentence>
+   </loadingResponses>
+   <autonomous/>
    <permissions/>
   </behaviorContent>
  </contents>
+ <requirements>
+  <naoqiRequirement minVersion="2.5"/>
+  <robotRequirement model="JULIETTE"/>
+ </requirements>
  <services>
-  <service execStart="main.py" name="PythonAppMain" autorun="false"/>
+  <service name="PythonAppMain" autorun="false" execStart="main.py"/>
  </services>
  <executableFiles>
   <file path="main.py"/>

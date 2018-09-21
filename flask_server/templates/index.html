@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h1>Vælg historie</h1>
+        </div>
+    </div>
+    <div class="row">
+        {% for story in story_data %}
+            <div class="col-4">
+                <a href="{{ url_for('story', story=loop.index-1) }}">
+                    <img src="{{ story_path[loop.index-1] }}{{ story.cover_image }}" alt="{{ story.title }}" class="img-fluid">
+                    {{ story.title }}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    {{ data }}
+{% endblock %}

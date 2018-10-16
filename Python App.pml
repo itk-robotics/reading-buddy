@@ -188,6 +188,8 @@
         <File name="websocket" src="packages/werkzeug/websocket.py" />
         <File name="wrappers" src="packages/werkzeug/wrappers.py" />
         <File name="wsgi" src="packages/werkzeug/wsgi.py" />
+        <File name="cover" src="flask_server/static/stories/drageridderne/assets/images/cover.jpg" />
+        <File name="drageridderne" src="flask_server/static/stories/drageridderne/drageridderne.json" />
     </Resources>
     <Topics />
     <IgnoredPaths />

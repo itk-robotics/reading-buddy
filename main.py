@@ -32,7 +32,7 @@ with open('logfile.txt', 'a') as the_file:
 
 
 DEBUG = False
-CONNECTION_NOTIFICATION = "internet connection offline"
+CONNECTION_NOTIFICATION = "jeg kan ikke få forbindelse til internettet"
 PORT=5000
 """when debug is true: people are ignored by autonomous life. Head touch triggers monologue"""
 
@@ -148,7 +148,9 @@ class PythonAppMain(object):
         while self.internetOk() != True:
             print "INTERNET PROBLEM"
             self.memory.raiseEvent("memShowString", "WiFi: " + str(self.conman.state()))  # optional, displayed on tablet
-            sleep(3)
+            self.animatedSpeech.say("jeg er ikke forbundet til internettet.")
+            #self.stop_app()
+            sleep(5)
 
         _start_time = time()
         try:
@@ -335,7 +337,7 @@ class PythonAppMain(object):
                     if CONNECTION_NOTIFICATION in subsublist:
                         intNotificationID = sublist[0][1]
 
-        if self.conman.state() == 'online':
+        if self.conman.state() == 'online' or 'ready':
             self.logger.info("internet connection online")
             if intNotificationID != 0:
                 self.notification.remove(intNotificationID)

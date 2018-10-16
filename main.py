@@ -6,8 +6,7 @@ Main behavior for SoftBank Pepper 1.7
 uuid="reading_buddy"
 """
 
-with open('logfile.txt', 'a') as the_file:
-    the_file.write('starting\n')
+
 import sys
 import os
 import qi
@@ -23,12 +22,12 @@ from flask_server import flaskapp
 import json
 #from utilities.sendMail import choregrapheMail
 from time import time, sleep
-#import datetime
+import datetime
 #import random
 #import threading
 
 with open('logfile.txt', 'a') as the_file:
-    the_file.write('imports OK\n')
+    the_file.write('imports OK, started at ' + str(datetime.datetime.now()) + ', ')
 
 
 DEBUG = False
@@ -42,7 +41,7 @@ class PythonAppMain(object):
 
     def __init__(self, application):
         with open('logfile.txt', 'a') as the_file:
-            the_file.write('begin init\n')
+            the_file.write('begin init, ')
 
 
         # Getting a session that will be reused everywhere
@@ -354,6 +353,10 @@ class PythonAppMain(object):
     def stop_app(self):
         # To be used if internal methods need to stop the service from inside.
         # external NAOqi scripts should use ALServiceManager.stopService if they need to stop it.
+        
+        with open('logfile.txt', 'a') as the_file:
+            the_file.write('stopping at ' + str(datetime.datetime.now()) + ', ')
+        
         self.logger.info("Stopping service...")
         self.application.stop()
         # TODO call al behaviormanager and stop the behavior. It block s The Dialog.

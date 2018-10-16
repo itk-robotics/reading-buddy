@@ -16,6 +16,16 @@ Start robot in danish dialog mode.
 Use trigger phrase as defined dialog, e.g. "læsemakker".
 Connect a browser to book-server via the endpoints shown on Pepper's tablet.
 
+
+## How to create new stories
+
+- Navigate to '~/.local/share/PackageManager/apps/reading_buddy/flask_server/static/stories'
+- Duplicate the folder 'drageridderne'
+- Rename the new folder 'drageridderne' folder and .json. They must have identical names.
+- Use the .json file as template for new content.
+- Upload to robot.
+
+
 ### Build assets
 
 Run `yarn install` this installs all the required node packages.
@@ -51,11 +61,3 @@ Tell flask what to import `export FLASK_APP=laesemakker.py`
 Enable debugmode `export FLASK_ENV=development`
 
 Run the local webserver `flask run`
-
-## How to create new stories
-
-- Navigate to '~/.local/share/PackageManager/apps/reading_buddy/flask_server/static/stories'
-- Duplicate the folder 'drageridderne'
-- Rename the new folder 'drageridderne' folder and .json. They must have identical names.
-- Use the .json file as template for new content.
-- Upload to robot.

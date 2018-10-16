@@ -13,7 +13,8 @@ Install the application via Choregraphe
 ## Run
 
 Start robot in danish dialog mode.
-Use trigger phrase as defined dialog, e.g. "læsemakker"
+Use trigger phrase as defined dialog, e.g. "læsemakker".
+Connect a browser to book-server via the endpoints shown on Pepper's tablet.
 
 ### Build assets
 
@@ -50,12 +51,6 @@ Tell flask what to import `export FLASK_APP=laesemakker.py`
 Enable debugmode `export FLASK_ENV=development`
 
 Run the local webserver `flask run`
-
-## Launch the app on the robot
-
-- Navigate to '~/.local/share/PackageManager/apps/reading_buddy'
-- Run 'python main.py'
-- Connect a browser to book-server via the endpoints shown on Pepper's tablet.
 
 ## How to create new stories
 

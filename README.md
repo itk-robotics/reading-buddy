@@ -3,14 +3,17 @@
 Instruction for setting up and running this project "Læsemakker"
 
 ## Setup
-
-- Copy reading_buddy to '~/.local/share/PackageManager/apps/'
+Insert story folders in 'reading-buddy\flask_server\static\stories'
 
 ## Installation
 
-- N/A
+On PC
+Install the application via Choregraphe
 
-## Development
+## Run
+
+Start robot in danish dialog mode.
+Use trigger phrase as defined dialog, e.g. "læsemakker"
 
 ### Build assets
 

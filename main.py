@@ -6,6 +6,8 @@ Main behavior for SoftBank Pepper 1.7
 uuid="reading_buddy"
 """
 
+with open('logfile.txt', 'a') as the_file:
+    the_file.write('starting\n')
 import sys
 import os
 import qi
@@ -25,6 +27,8 @@ from time import time, sleep
 #import random
 #import threading
 
+with open('logfile.txt', 'a') as the_file:
+    the_file.write('imports OK\n')
 
 
 DEBUG = False
@@ -37,6 +41,8 @@ OPTIONAL_NET_CONNECTON = False #If set to False, then internet connection is req
 class PythonAppMain(object):
 
     def __init__(self, application):
+        with open('logfile.txt', 'a') as the_file:
+            the_file.write('begin init\n')
 
 
         # Getting a session that will be reused everywhere
@@ -123,10 +129,16 @@ class PythonAppMain(object):
         for story_path in self.stories:
             self._json_paths.append(story_path.rsplit('/', 1)[0])
             self.story_data.append(self.read_json(story_path))
+            
+        with open('logfile.txt', 'a') as the_file:
+            the_file.write('init OK\n')
 
 
     @qi.nobind
     def start_app(self):
+        with open('logfile.txt', 'a') as the_file:
+            the_file.write('starting app\n')
+    
         self.logger.info("Started!")
         print "\033[95m Starting app \033[0m"
         self.audio.playSoundSetFile('sfx_confirmation_1')
@@ -225,7 +237,7 @@ class PythonAppMain(object):
             try:
                 _question_animation = self.active_story['chapters'][self.current_chapter]['question_animation']
                 print _question_animation
-                sleep(3)
+                #sleep(3)  #disabled because the delay might annoys user
                 qi.async(self.beman.runBehavior, _question_animation)
 
             except:
@@ -250,7 +262,7 @@ class PythonAppMain(object):
             self.current_chapter = self.current_chapter + 1
             print "\033[95m self.current_page = 0 \033[0m"
             self.current_page = 0
-            sleep(3)
+            #sleep(3) #disabled because the delay might annoy user
             qi.async(self.beman.runBehavior, self.user_choice)
 
 
@@ -371,6 +383,8 @@ class PythonAppMain(object):
 if __name__ == "__main__":
     # with this you can run the script for tests on remote robots
     # run : python main.py --qi-url 123.123.123.123
+    with open('logfile.txt', 'a') as the_file:
+        the_file.write('main called\n')
     app = qi.Application(sys.argv)
     app.start()
     service_instance = PythonAppMain(app)

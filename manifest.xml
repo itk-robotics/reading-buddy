@@ -18,19 +18,17 @@
    <userRequestable/>
    <nature>interactive</nature>
    <names>
+    <name lang="da_DK">læsemakker</name>
     <name lang="en_US">TODO</name>
    </names>
    <descriptions>
     <description lang="en_US">TODO</description>
    </descriptions>
-   <triggerSentences>
-    <sentence lang="da_DK">historie</sentence>
-    <sentence lang="da_DK">vil du være min læsemakker</sentence>
-    <sentence lang="da_DK">læsemakker</sentence>
-   </triggerSentences>
+   <triggerSentences/>
    <loadingResponses>
-    <sentence lang="da_DK">læsemakker</sentence>
+    <sentence lang="da_DK">et øjeblik</sentence>
    </loadingResponses>
+   <autonomous/>
    <permissions/>
   </behaviorContent>
  </contents>
@@ -39,7 +37,7 @@
   <robotRequirement model="JULIETTE"/>
  </requirements>
  <services>
-  <service name="PythonAppMain" autorun="false" execStart="main.py"/>
+  <service execStart="main.py" name="PythonAppMain" autorun="false"/>
  </services>
  <executableFiles>
   <file path="main.py"/>

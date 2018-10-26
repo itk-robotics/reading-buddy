@@ -1,21 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="row">
-        <div class="col">
-            {% for text in content %}
-                {% if text.chapter_title %}
-                    <h2>{{ text.chapter_title }}</h2>
-                {% endif %}
-                <p>{{ text.text }}</p>
-            {% endfor %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 border-bottom">
+                <p class="pt-2 pb-2 mb-0 text-muted">Læs højt</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mt-5">
+                {% for text in content %}
+                    {% if text.chapter_title %}
+                        <h2 class="mb-5">{{ text.chapter_title }}</h2>
+                    {% endif %}
+                    <p class="text-lg">{{ text.text }}</p>
+                {% endfor %}
+            </div>
             {% if lastpage == True %}
-                <a href="{{ url_for('question', story=story_id) }}" class="btn btn-primary">Næste side ></a>
+                <a href="{{ url_for('question', story=story_id) }}" class="btn btn-primary btn-lg btn-fixed-right">Næste side ></a>
             {% else %}
                 {% if theend == False %}
-                    <a href="{{ url_for('page', story=story_id) }}" class="btn btn-primary">Næste side ></a>
+                    <a href="{{ url_for('page', story=story_id) }}" class="btn btn-primary btn-lg btn-fixed-right">Næste side ></a>
                 {% else %}
-                    <a href="{{ url_for('index', story=story_id) }}" class="btn btn-primary">Slut ></a>
+                    <a href="{{ url_for('index', story=story_id) }}" class="btn btn-primary btn-lg btn-fixed-right">Slut ></a>
                 {% endif %}
             {% endif %}
         </div>

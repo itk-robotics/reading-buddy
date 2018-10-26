@@ -1,4 +1,5 @@
 $primary: #0B24BE;
+$font-family-sans-serif: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" ;
 
 @import "~bootstrap/scss/bootstrap";
 
@@ -8,4 +9,60 @@ html, body {
 
 body {
     border: 1em solid $primary;
+}
+.container, .container-fluid {
+    height: 100%;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(11,36,190,.8);
+    }
+}
+.btn-fixed-right {
+    position: absolute;
+    right: .5em;
+    bottom: 3em;
+    padding-left: 5em;
+    padding-right: 5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.btn-choice {
+    padding-left: 5em;
+    padding-right: 5em;
+    padding-top: 4em;
+    padding-bottom: 4em;
+}
+
+.text-lg {
+    font-size: 1.5rem;
+}
+
+.img-fixed-bottom {
+    position: absolute;
+    bottom: .5rem;
+    right: 4rem;
+    max-height: 20vh
 }

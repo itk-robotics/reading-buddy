@@ -6,7 +6,6 @@
     </BehaviorDescriptions>
     <Dialogs />
     <Resources>
-        <File name="main" src="main.py" />
         <File name="icon" src="icon.png" />
         <File name="index" src="html/index.html" />
         <File name="tabletScript" src="html/js/tabletScript.js" />
@@ -17,7 +16,6 @@
         <File name="config" src="config.py" />
         <File name="forms" src="forms.py" />
         <File name="laesemakker" src="laesemakker.py" />
-        <File name="laesemakker" src="laesemakker.pyc" />
         <File name="package" src="package.json" />
         <File name="postcss.config" src="postcss.config.js" />
         <File name="scripts" src="src/scripts/scripts.js" />
@@ -26,7 +24,6 @@
         <File name="__init__" src="utilities/__init__.py" />
         <File name="expression_watcher" src="utilities/expression_watcher.py" />
         <File name="sendMail" src="utilities/sendMail.py" />
-        <File name="tempTester" src="utilities/tempTester.py" />
         <File name="webpack.config" src="webpack.config.js" />
         <File name="yarn" src="yarn.lock" />
         <File name="__init__" src="flask_server/__init__.py" />
@@ -64,6 +61,12 @@
         <File name="page" src="flask_server/templates/page.html" />
         <File name="question" src="flask_server/templates/question.html" />
         <File name="story" src="flask_server/templates/story.html" />
+        <File name="-01_pepper-tablet-splash" src="flask_server/static/images/-01_pepper-tablet-splash.png" />
+        <File name="-01_pepper-tablet-splash" src="flask_server/static/images/-01_pepper-tablet-splash.svg" />
+        <File name="-01_pepper-tablet-splash@2x" src="flask_server/static/images/-01_pepper-tablet-splash@2x.png" />
+        <File name="pepper" src="flask_server/static/images/pepper.png" />
+        <File name="packages" src="packages.zip" />
+        <File name="main" src="main.py" />
         <File name="__init__" src="packages/click/__init__.py" />
         <File name="_bashcomplete" src="packages/click/_bashcomplete.py" />
         <File name="_compat" src="packages/click/_compat.py" />
@@ -185,6 +188,8 @@
         <File name="websocket" src="packages/werkzeug/websocket.py" />
         <File name="wrappers" src="packages/werkzeug/wrappers.py" />
         <File name="wsgi" src="packages/werkzeug/wsgi.py" />
+        <File name="cover" src="flask_server/static/stories/drageridderne/assets/images/cover.jpg" />
+        <File name="drageridderne" src="flask_server/static/stories/drageridderne/drageridderne.json" />
     </Resources>
     <Topics />
     <IgnoredPaths />

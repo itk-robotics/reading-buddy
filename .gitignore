@@ -1,4 +1,6 @@
 /node_modules
 /venv
 .idea
-**/*.pyc
+*.pyc
+flask_server/static/stories/drageridderne/drageridderne.json
+flask_server/static/stories/drageridderne/assets/images/cover.jpg

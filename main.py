@@ -6,6 +6,7 @@ Main behavior for SoftBank Pepper 1.7
 uuid="reading_buddy"
 """
 
+
 import sys
 import os
 import qi
@@ -21,14 +22,16 @@ from flask_server import flaskapp
 import json
 #from utilities.sendMail import choregrapheMail
 from time import time, sleep
-#import datetime
+import datetime
 #import random
 #import threading
 
+with open('logfile.txt', 'a') as the_file:
+    the_file.write('imports OK, started at ' + str(datetime.datetime.now()) + ', ')
 
 
 DEBUG = False
-CONNECTION_NOTIFICATION = "internet connection offline"
+CONNECTION_NOTIFICATION = "jeg kan ikke få forbindelse til internettet"
 PORT=5000
 """when debug is true: people are ignored by autonomous life. Head touch triggers monologue"""
 
@@ -37,6 +40,8 @@ OPTIONAL_NET_CONNECTON = False #If set to False, then internet connection is req
 class PythonAppMain(object):
 
     def __init__(self, application):
+        with open('logfile.txt', 'a') as the_file:
+            the_file.write('begin init, ')
 
 
         # Getting a session that will be reused everywhere
@@ -92,14 +97,6 @@ class PythonAppMain(object):
             #self.systemMail.sendMessage(_strMessage)
 
 
-        #Do not prepare face led group
-        if False:
-            # START custom speech recognition feedback
-            self.leds = self.session.service("ALLeds")
-            for x in range(1,9):
-                self.leds.createGroup("thinkingFace"+str(x), ["RightFaceLed"+str(x), "LeftFaceLed"+str(x)])
-            # STOP custom speech recognition feedback
-
         self.memory = self.session.service("ALMemory")
 
         self.callbackMiddleTactile = self.memory.subscriber('MiddleTactilTouched')
@@ -131,10 +128,16 @@ class PythonAppMain(object):
         for story_path in self.stories:
             self._json_paths.append(story_path.rsplit('/', 1)[0])
             self.story_data.append(self.read_json(story_path))
+            
+        with open('logfile.txt', 'a') as the_file:
+            the_file.write('init OK\n')
 
 
     @qi.nobind
     def start_app(self):
+        with open('logfile.txt', 'a') as the_file:
+            the_file.write('starting app\n')
+    
         self.logger.info("Started!")
         print "\033[95m Starting app \033[0m"
         self.audio.playSoundSetFile('sfx_confirmation_1')
@@ -144,7 +147,9 @@ class PythonAppMain(object):
         while self.internetOk() != True:
             print "INTERNET PROBLEM"
             self.memory.raiseEvent("memShowString", "WiFi: " + str(self.conman.state()))  # optional, displayed on tablet
-            sleep(3)
+            self.animatedSpeech.say("jeg er ikke forbundet til internettet.")
+            #self.stop_app()
+            sleep(5)
 
         _start_time = time()
         try:
@@ -233,7 +238,7 @@ class PythonAppMain(object):
             try:
                 _question_animation = self.active_story['chapters'][self.current_chapter]['question_animation']
                 print _question_animation
-                sleep(3)
+                #sleep(3)  #disabled because the delay might annoys user
                 qi.async(self.beman.runBehavior, _question_animation)
 
             except:
@@ -258,7 +263,7 @@ class PythonAppMain(object):
             self.current_chapter = self.current_chapter + 1
             print "\033[95m self.current_page = 0 \033[0m"
             self.current_page = 0
-            sleep(3)
+            #sleep(3) #disabled because the delay might annoy user
             qi.async(self.beman.runBehavior, self.user_choice)
 
 
@@ -331,7 +336,7 @@ class PythonAppMain(object):
                     if CONNECTION_NOTIFICATION in subsublist:
                         intNotificationID = sublist[0][1]
 
-        if self.conman.state() == 'online':
+        if self.conman.state() == 'online' or 'ready':
             self.logger.info("internet connection online")
             if intNotificationID != 0:
                 self.notification.remove(intNotificationID)
@@ -348,6 +353,10 @@ class PythonAppMain(object):
     def stop_app(self):
         # To be used if internal methods need to stop the service from inside.
         # external NAOqi scripts should use ALServiceManager.stopService if they need to stop it.
+        
+        with open('logfile.txt', 'a') as the_file:
+            the_file.write('stopping at ' + str(datetime.datetime.now()) + ', ')
+        
         self.logger.info("Stopping service...")
         self.application.stop()
         # TODO call al behaviormanager and stop the behavior. It block s The Dialog.
@@ -372,13 +381,15 @@ class PythonAppMain(object):
         self.memory.raiseEvent("memHideString", 1)
         self.ts.resetTablet()
         #TODO Clean subscribed signals?
-        self.leds.on("FaceLeds")
+        #self.leds.on("FaceLeds")
         self.logger.info("Cleaned!")
 
 
 if __name__ == "__main__":
     # with this you can run the script for tests on remote robots
     # run : python main.py --qi-url 123.123.123.123
+    with open('logfile.txt', 'a') as the_file:
+        the_file.write('main called\n')
     app = qi.Application(sys.argv)
     app.start()
     service_instance = PythonAppMain(app)

@@ -5,17 +5,13 @@ Instruction for setting up and running this project "Læsemakker"
 ## Setup
 Insert story folders in 'reading-buddy\flask_server\static\stories'
 
-## Installation
+- Create folder 'reading_buddy' in '~/.local/share/PackageManager/apps/' and copy files.
 
-On PC
-Install the application via Choregraphe
+## Launch the app on the robot
 
-## Run
-
-Start robot in danish dialog mode.
-Use trigger phrase as defined dialog, e.g. "læsemakker".
-Connect a browser to book-server via the endpoints shown on Pepper's tablet.
-
+- Navigate to '~/.local/share/PackageManager/apps/reading_buddy'
+- Run 'python main.py'
+- Connect a browser to book-server via the endpoints shown on Pepper's tablet.
 
 ## How to create new stories
 
@@ -25,6 +21,7 @@ Connect a browser to book-server via the endpoints shown on Pepper's tablet.
 - Use the .json file as template for new content.
 - Upload to robot.
 
+## Frontend Development Setup
 
 ### Build assets
 
@@ -61,3 +58,4 @@ Tell flask what to import `export FLASK_APP=laesemakker.py`
 Enable debugmode `export FLASK_ENV=development`
 
 Run the local webserver `flask run`
+

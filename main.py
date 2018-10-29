@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding=utf-8
 """
-Author Anders Krogsager. ITK October 2017
-Main behavior for SoftBank Pepper 1.7
+Author Anders Krogsager. ITK October 2018
+Pepper 1.7
 uuid="reading_buddy"
 """
 

@@ -226,6 +226,15 @@ class PythonAppMain(object):
                 self.the_end = True
                 page_content = ["the end"]
 
+                try:
+                    # look for outtro
+                    _outtro_say = self.active_story['outtro_say']
+                    print _outtro_say
+                    qi.async(self.animatedSpeech.say, _outtro_say)
+
+                except:
+                    print "no outtro_say was found"
+
             # print ("page content:")
             # print (page_content)
             # print ("last_page = "+ str(self.last_page))

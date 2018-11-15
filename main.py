@@ -178,7 +178,6 @@ class PythonAppMain(object):
         def index():
             self.ts.hideWebview()
             self.logger.info(self._json_paths)
-            #qi.async(self.beman.runBehavior, "aarhustest-c0d5d9/Nedslag1") #TODO DELETE
             return render_template('index.html', title='Robotten min laesemakker', story_data=self.story_data,
                                    story_path=self._json_paths)
 
@@ -209,7 +208,7 @@ class PythonAppMain(object):
             try:
                 #look for animations
                 page_animation = self.active_story['chapters'][self.current_chapter]['pages'][self.current_page]['animation']
-                self.logger.info(page_animation)
+                self.logger.info("runBehavior " + page_animation)
                 self.beman.runBehavior(page_animation)
 
             except:
@@ -247,6 +246,7 @@ class PythonAppMain(object):
                 _question_animation = self.active_story['chapters'][self.current_chapter]['question_animation']
                 self.logger.info(_question_animation)
                 #sleep(3)  #disabled because the delay might annoys user
+                self.logger.info("async runBehavior " + _question_animation)
                 qi.async(self.beman.runBehavior, _question_animation)
 
             except:
@@ -265,14 +265,15 @@ class PythonAppMain(object):
             self.user_choice = request.args.get('choice', None)
             self.logger.info("choice content, user selected: " + self.user_choice)
 
-            print (self.active_story['chapters'][self.current_chapter]['options'][self.user_choice])
+            self.logger.info(self.active_story['chapters'][self.current_chapter]['options'][self.user_choice])
             self.last_page = False  # reset bool to default
-            print "\033[95m self.current_chapter + 1 \033[0m"
             self.current_chapter = self.current_chapter + 1
-            print "\033[95m self.current_page = 0 \033[0m"
             self.current_page = 0
             #sleep(3) #disabled because the delay might annoy user
-            qi.async(self.beman.runBehavior, self.user_choice)
+            self.logger.info("Is installed: " + str(self.beman.isBehaviorInstalled(self.user_choice)))
+            self.logger.info("Is present: " + str(self.beman.isBehaviorPresent(self.user_choice)))
+            self.logger.info("runBehavior " + self.user_choice)
+            self.beman.runBehavior(self.user_choice)
 
 
             return render_template('choice.html', title='choice', choice=self.user_choice)
@@ -306,7 +307,6 @@ class PythonAppMain(object):
         #    print ("end of story")
         #    self.the_end = True
 
-        print "\033[95m self.current_page + 1 \033[0m"
         self.current_page = self.current_page + 1
         # print "number of pages in current chapter:"
         # print len(self.active_story['chapters'][self.current_chapter]['pages'])

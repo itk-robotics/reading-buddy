@@ -265,15 +265,15 @@ class PythonAppMain(object):
             self.user_choice = request.args.get('choice', None)
             self.logger.info("choice content, user selected: " + self.user_choice)
 
-            self.logger.info(self.active_story['chapters'][self.current_chapter]['options'][self.user_choice])
+            _user_choice = self.active_story['chapters'][self.current_chapter]['options'][self.user_choice]
             self.last_page = False  # reset bool to default
             self.current_chapter = self.current_chapter + 1
             self.current_page = 0
             #sleep(3) #disabled because the delay might annoy user
-            self.logger.info("Is installed: " + str(self.beman.isBehaviorInstalled(self.user_choice)))
-            self.logger.info("Is present: " + str(self.beman.isBehaviorPresent(self.user_choice)))
-            self.logger.info("runBehavior " + self.user_choice)
-            self.beman.runBehavior(self.user_choice)
+            self.logger.info("runBehavior " + _user_choice)
+            self.logger.info("Is installed: " + str(self.beman.isBehaviorInstalled(_user_choice)))
+            self.logger.info("Is present: " + str(self.beman.isBehaviorPresent(_user_choice)))
+            self.beman.runBehavior(_user_choice)
 
 
             return render_template('choice.html', title='choice', choice=self.user_choice)

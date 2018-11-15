@@ -141,11 +141,11 @@ class PythonAppMain(object):
         self.logger.info("Started!")
         print "\033[95m Starting app \033[0m"
         self.audio.playSoundSetFile('sfx_confirmation_1')
-        print "DEBUG = " + str(DEBUG)
+        self.logger.info("DEBUG = " + str(DEBUG))
 
 
         while self.internetOk() != True:
-            print "INTERNET PROBLEM"
+            self.logger.warning("INTERNET PROBLEM")
             self.memory.raiseEvent("memShowString", "WiFi: " + str(self.conman.state()))  # optional, displayed on tablet
             self.animatedSpeech.say("jeg er ikke forbundet til internettet.")
             #self.stop_app()
@@ -158,12 +158,12 @@ class PythonAppMain(object):
             self.conman.scan()#TODO Disble conamn scan
 
         except Exception, e:
-            print "ConnectionManager scan failed"
+            self.logger.warning("ConnectionManager scan failed")
             self.memory.raiseEvent("memShowString", "Kunne ikke hente WiFi oplysninger")
             self.stop_app()
 
         services = self.conman.services()
-        print ("conman time: " + str(time()-_start_time))
+        self.logger.info("conman time: " + str(time()-_start_time))
         for service in services:
             network = dict(service)
             if network['State'] == "online":
@@ -177,7 +177,7 @@ class PythonAppMain(object):
         @flaskapp.route('/index')
         def index():
             self.ts.hideWebview()
-            print (self._json_paths)
+            self.logger.info(self._json_paths)
             #qi.async(self.beman.runBehavior, "aarhustest-c0d5d9/Nedslag1") #TODO DELETE
             return render_template('index.html', title='Robotten min laesemakker', story_data=self.story_data,
                                    story_path=self._json_paths)
@@ -188,18 +188,17 @@ class PythonAppMain(object):
             self.the_end = False  # starting a new story?
             self.story_id = int(request.args.get('story', None))
             self.json_path = self.stories[self.story_id]
-            print (self.json_path)
             self.json_path.rsplit('/', 1)[0]  # cut off *.json in path.
             self.init_story(self.json_path)
 
             try:
                 #look for intro
                 _intro_say = self.active_story['intro_say']
-                print _intro_say
+                self.logger.info(_intro_say)
                 qi.async(self.animatedSpeech.say, _intro_say)
 
             except:
-                print "no intro_say was found"
+                self.logger.info("no intro_say was found")
             return render_template('story.html', title='story', story_data=self.story_data, story_id=self.story_id,
                                    story_path=self.json_path.rsplit('/', 1)[0])
 
@@ -210,11 +209,11 @@ class PythonAppMain(object):
             try:
                 #look for animations
                 page_animation = self.active_story['chapters'][self.current_chapter]['pages'][self.current_page]['animation']
-                print page_animation
+                self.logger.info(page_animation)
                 self.beman.runBehavior(page_animation)
 
             except:
-                print "no page-specific animation was found"
+                self.logger.info("no page-specific animation was found")
 
             if not (self.current_chapter == len(self.active_story['chapters'])):
                 print ("current_page: " + str(self.current_page))
@@ -229,11 +228,11 @@ class PythonAppMain(object):
                 try:
                     # look for outtro
                     _outtro_say = self.active_story['outtro_say']
-                    print _outtro_say
+                    self.logger.info(_outtro_say)
                     qi.async(self.animatedSpeech.say, _outtro_say)
 
                 except:
-                    print "no outtro_say was found"
+                    self.logger.info("no outtro_say was found")
 
             # print ("page content:")
             # print (page_content)
@@ -246,12 +245,12 @@ class PythonAppMain(object):
         def question():
             try:
                 _question_animation = self.active_story['chapters'][self.current_chapter]['question_animation']
-                print _question_animation
+                self.logger.info(_question_animation)
                 #sleep(3)  #disabled because the delay might annoys user
                 qi.async(self.beman.runBehavior, _question_animation)
 
             except:
-                print "no question_animation animation was found"
+                self.logger.info("no question_animation animation was found")
 
             question = self.active_story['chapters'][self.current_chapter]['question']
             choice_1 = self.active_story['chapters'][self.current_chapter]['options'].keys()[0]
@@ -264,7 +263,7 @@ class PythonAppMain(object):
         def choice():
 
             self.user_choice = request.args.get('choice', None)
-            print ("choice content, user selected: " + self.user_choice)
+            self.logger.info("choice content, user selected: " + self.user_choice)
 
             print (self.active_story['chapters'][self.current_chapter]['options'][self.user_choice])
             self.last_page = False  # reset bool to default

@@ -1,45 +1,103 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package version="1.0.0" uuid="reading_buddy">
- <names>
-  <name lang="da_DK">Læsemakker</name>
-  <name lang="en_US">Reading Buddy</name>
- </names>
- <descriptions>
-  <description lang="en_US">v0.01 reading buddy </description>
- </descriptions>
- <supportedLanguages>
-  <language>da_DK</language>
- </supportedLanguages>
- <descriptionLanguages>
-  <language>da_DK</language>
- </descriptionLanguages>
- <contents>
-  <behaviorContent path=".">
-   <userRequestable/>
-   <nature>interactive</nature>
-   <names>
-    <name lang="da_DK">læsemakker</name>
-    <name lang="en_US">TODO</name>
-   </names>
-   <descriptions>
-    <description lang="en_US">TODO</description>
-   </descriptions>
-   <triggerSentences/>
-   <loadingResponses>
-    <sentence lang="da_DK">et øjeblik</sentence>
-   </loadingResponses>
-   <autonomous/>
-   <permissions/>
-  </behaviorContent>
- </contents>
- <requirements>
-  <naoqiRequirement minVersion="2.5"/>
-  <robotRequirement model="JULIETTE"/>
- </requirements>
- <services>
-  <service autorun="false" execStart="main.py" name="PythonAppMain"/>
- </services>
- <executableFiles>
-  <file path="main.py"/>
- </executableFiles>
+<package uuid="reading_buddy" version="1.0.0">
+  <names>
+    <name lang="da_DK">Læsemakker</name>
+    <name lang="da_DK-x-scrald">Læsemakker</name>
+  </names>
+  <supportedLanguages>
+    <language>da_DK</language>
+  </supportedLanguages>
+  <descriptionLanguages>
+    <language>da_DK</language>
+  </descriptionLanguages>
+  <contents>
+    <behaviorContent path=".">
+      <userRequestable/>
+      <nature>interactive</nature>
+      <names>
+        <name lang="da_DK">læsemakker</name>
+        <name lang="da_DK-x-scrald">læsemakker</name>
+      </names>
+      <triggerSentences/>
+      <loadingResponses>
+        <sentence lang="da_DK">et øjeblik</sentence>
+        <sentence lang="da_DK-x-scrald">et øjeblik</sentence>
+      </loadingResponses>
+      <autonomous/>
+      <permissions/>
+    </behaviorContent>
+    <behaviorContent path="animations/Bange">
+      <nature>interactive</nature>
+      <triggerSentences/>
+      <loadingResponses/>
+      <autonomous/>
+      <permissions/>
+    </behaviorContent>
+    <behaviorContent path="animations/Behavior_1">
+      <nature>interactive</nature>
+      <triggerSentences/>
+      <loadingResponses/>
+      <autonomous/>
+      <permissions/>
+    </behaviorContent>
+    <behaviorContent path="animations/Bekymret">
+      <nature>interactive</nature>
+      <triggerSentences/>
+      <loadingResponses/>
+      <autonomous/>
+      <permissions/>
+    </behaviorContent>
+    <behaviorContent path="animations/Familie">
+      <nature>interactive</nature>
+      <triggerSentences/>
+      <loadingResponses/>
+      <autonomous/>
+      <permissions/>
+    </behaviorContent>
+    <behaviorContent path="animations/Intro">
+      <nature>interactive</nature>
+      <triggerSentences/>
+      <loadingResponses/>
+      <autonomous/>
+      <permissions/>
+    </behaviorContent>
+    <behaviorContent path="animations/Nedslag1">
+      <nature>interactive</nature>
+      <triggerSentences/>
+      <loadingResponses/>
+      <autonomous/>
+      <permissions/>
+    </behaviorContent>
+    <behaviorContent path="animations/Nedslag_2">
+      <nature>interactive</nature>
+      <triggerSentences/>
+      <loadingResponses/>
+      <autonomous/>
+      <permissions/>
+    </behaviorContent>
+    <behaviorContent path="animations/Venner">
+      <nature>interactive</nature>
+      <triggerSentences/>
+      <loadingResponses/>
+      <autonomous/>
+      <permissions/>
+    </behaviorContent>
+    <behaviorContent path="animations/WizardOfOz">
+      <nature>interactive</nature>
+      <triggerSentences/>
+      <loadingResponses/>
+      <autonomous/>
+      <permissions/>
+    </behaviorContent>
+  </contents>
+  <requirements>
+    <naoqiRequirement minVersion="2.5"/>
+    <robotRequirement model="JULIETTE"/>
+  </requirements>
+  <services>
+    <service autorun="false" name="PythonAppMain" execStart="main.py"/>
+  </services>
+  <executableFiles>
+    <file path="main.py"/>
+  </executableFiles>
 </package>

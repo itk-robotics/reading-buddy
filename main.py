@@ -292,6 +292,7 @@ class PythonAppMain(object):
         self.current_chapter = 0
         self.current_page = 0
         print ("story name: " + self.active_story['title'] + ". Story author: " + self.active_story['author'])
+        the_file.write(self.active_story)
 
     @qi.nobind
     def next_page(self):

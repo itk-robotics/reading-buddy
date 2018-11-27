@@ -176,7 +176,7 @@ class PythonAppMain(object):
         @flaskapp.route('/')
         @flaskapp.route('/index')
         def index():
-            self.ts.hideWebview()
+            self.memory.raiseEvent("memHideString", 1)
             self.logger.info(self._json_paths)
             return render_template('index.html', title='Robotten min laesemakker', story_data=self.story_data,
                                    story_path=self._json_paths)
@@ -292,7 +292,6 @@ class PythonAppMain(object):
         self.current_chapter = 0
         self.current_page = 0
         print ("story name: " + self.active_story['title'] + ". Story author: " + self.active_story['author'])
-        the_file.write(self.active_story)
 
     @qi.nobind
     def next_page(self):

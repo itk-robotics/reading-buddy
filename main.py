@@ -227,7 +227,7 @@ class PythonAppMain(object):
                 try:
                     # look for outtro
                     _outtro_say = self.active_story['outtro_say']
-                    self.logger.info(_outtro_say)
+                    self.logger.info(_outtro_say.encode('utf-8'))
                     qi.async(self.animatedSpeech.say, _outtro_say)
 
                 except:

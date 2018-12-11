@@ -23,8 +23,7 @@ import json
 #from utilities.sendMail import choregrapheMail
 from time import time, sleep
 import datetime
-#import random
-#import threading
+import random
 
 with open('logfile.txt', 'a') as the_file:
     the_file.write('imports OK, started at ' + str(datetime.datetime.now()) + ', ')
@@ -54,6 +53,7 @@ class PythonAppMain(object):
 
         # Do some initializations before the service is registered to NAOqi
         self.logger.info("Initializing...")
+        self.leds = self.session.service("ALLeds")
         self.motion = self.session.service("ALMotion")
         self.posture = self.session.service("ALRobotPosture")
         self.beman = self.session.service("ALBehaviorManager")
@@ -296,6 +296,7 @@ class PythonAppMain(object):
     @qi.nobind
     def next_page(self):
 
+        self.feedback()
         if (self.current_page + 1) == len(self.active_story['chapters'][self.current_chapter]['pages']):
             print ("end of chapter")
             #print "\033[95m self.current_page = 0 \033[0m"
@@ -355,6 +356,21 @@ class PythonAppMain(object):
             if intNotificationID == 0:
                 self.notification.add({"message": CONNECTION_NOTIFICATION, "severity": "warning", "removeOnRead": True})
             return False
+
+    @qi.nobind
+    def feedback(self):
+        animation = ["animations/Stand/Gestures/Kisses_1",
+         "animations/Stand/Emotions/Positive/Excited_1",
+         "animations/Stand/Emotions/Positive/Excited_2",
+         "animations/Stand/Emotions/Positive/Excited_3",
+         "animations/Stand/Emotions/Positive/Happy_4"
+         ]
+        _a = random.choice(animation)
+        self.logger.info("running animation %s" % _a)
+        self.beman.runBehavior(_a)
+
+        self.leds.on("FaceLeds")
+
 
 
     @qi.nobind

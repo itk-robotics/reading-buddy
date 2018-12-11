@@ -8,10 +8,8 @@ Insert story folders in 'reading-buddy\flask_server\static\stories'
 - Create folder 'reading_buddy' in '~/.local/share/PackageManager/apps/' and copy files.
 
 ## Launch the app on the robot
-
-- Navigate to '~/.local/share/PackageManager/apps/reading_buddy'
-- Run 'python main.py'
-- Connect a browser to book-server via the endpoints shown on Pepper's tablet.
+- Use voice command to launch reading_boddy
+- Connect a device to the robot's network and open a browser via the endpoints shown on Pepper's tablet.
 
 ## How to create new stories
 

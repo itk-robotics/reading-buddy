@@ -3,13 +3,12 @@
 Instruction for setting up and running this project "Læsemakker"
 
 ## Setup
-Insert story folders in 'reading-buddy\flask_server\static\stories'
-
-- Create folder 'reading_buddy' in '~/.local/share/PackageManager/apps/' and copy files.
+- Insert story files in 'reading-buddy\flask_server\static\stories'
+- Open 'Python App.pml' in Choregraphe and install on robot.
 
 ## Launch the app on the robot
-- Use voice command to launch reading_boddy
-- Connect a device to the robot's network and open a browser via the endpoints shown on Pepper's tablet.
+- Use voice command 'læsemakker' to launch reading_buddy
+- Follow instructions on Peppers tablet.
 
 ## How to create new stories
 

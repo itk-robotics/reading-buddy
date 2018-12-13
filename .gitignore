@@ -4,3 +4,7 @@
 *.pyc
 flask_server/static/stories/drageridderne/drageridderne.json
 flask_server/static/stories/drageridderne/assets/images/cover.jpg
+
+flask_server/static/stories/drageridderne2/assets/images/cover\.jpg
+
+flask_server/static/stories/drageridderne2/drageridderne2\.json

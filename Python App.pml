@@ -3,6 +3,15 @@
     <Manifest src="manifest.xml" />
     <BehaviorDescriptions>
         <BehaviorDescription name="behavior" src="." xar="behavior.xar" />
+        <BehaviorDescription name="behavior" src="animations/Bange" xar="behavior.xar" />
+        <BehaviorDescription name="behavior" src="animations/Behavior_1" xar="behavior.xar" />
+        <BehaviorDescription name="behavior" src="animations/Bekymret" xar="behavior.xar" />
+        <BehaviorDescription name="behavior" src="animations/Familie" xar="behavior.xar" />
+        <BehaviorDescription name="behavior" src="animations/Intro" xar="behavior.xar" />
+        <BehaviorDescription name="behavior" src="animations/Nedslag1" xar="behavior.xar" />
+        <BehaviorDescription name="behavior" src="animations/Nedslag_2" xar="behavior.xar" />
+        <BehaviorDescription name="behavior" src="animations/Venner" xar="behavior.xar" />
+        <BehaviorDescription name="behavior" src="animations/WizardOfOz" xar="behavior.xar" />
     </BehaviorDescriptions>
     <Dialogs />
     <Resources>
@@ -188,8 +197,7 @@
         <File name="websocket" src="packages/werkzeug/websocket.py" />
         <File name="wrappers" src="packages/werkzeug/wrappers.py" />
         <File name="wsgi" src="packages/werkzeug/wsgi.py" />
-        <File name="cover" src="flask_server/static/stories/drageridderne/assets/images/cover.jpg" />
-        <File name="drageridderne" src="flask_server/static/stories/drageridderne/drageridderne.json" />
+        <File name="Normagrafik3" src="html/img/Normagrafik3.xcf" />
     </Resources>
     <Topics />
     <IgnoredPaths />

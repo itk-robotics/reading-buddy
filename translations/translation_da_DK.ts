@@ -44,10 +44,15 @@
     <context>
         <name>animations/Nedslag1/behavior.xar:/Animated Say</name>
         <message>
-            <location filename="animations/Nedslag1/behavior.xar" line="0"/>
             <source>Det var vel nok dejligt at få læst højt. Historien er meget spændende. Jeg elsker historier om drager. Men jeg har brug for jeres hjælp til at forstå hvad Tam tænker. Tror I Tam er mest bange eller bekymret?</source>
             <comment>Text</comment>
-            <translation type="unfinished">Det var vel nok dejligt at få læst højt. Historien er meget spændende. Jeg elsker historier om drager. Men jeg har brug for jeres hjælp til at forstå hvad Tam tænker. Tror I Tam er mest bange eller bekymret?</translation>
+            <translation type="obsolete">Det var vel nok dejligt at få læst højt. Historien er meget spændende. Jeg elsker historier om drager. Men jeg har brug for jeres hjælp til at forstå hvad Tam tænker. Tror I Tam er mest bange eller bekymret?</translation>
+        </message>
+        <message>
+            <location filename="animations/Nedslag1/behavior.xar" line="0"/>
+            <source>Det var vel nok dejligt at få læst højt. Historien er meget spændende. Jeg elsker historier om drager. \pau=500\ Men jeg har brug for jeres hjælp til at forstå hvad Tam tænker. \pau=500\ Tror I Tam er mest bange eller bekymret?</source>
+            <comment>Text</comment>
+            <translation type="unfinished">Det var vel nok dejligt at få læst højt. Historien er meget spændende. Jeg elsker historier om drager. \pau=500\ Men jeg har brug for jeres hjælp til at forstå hvad Tam tænker. \pau=500\ Tror I Tam er mest bange eller bekymret?</translation>
         </message>
     </context>
     <context>

@@ -62,8 +62,6 @@
         <File name="scripts" src="flask_server/static/js/scripts.js" />
         <File name="cover" src="flask_server/static/stories/book1/assets/images/cover.jpg" />
         <File name="book1" src="flask_server/static/stories/book1/book1.json" />
-        <File name="cover" src="flask_server/static/stories/book2/assets/images/cover.jpg" />
-        <File name="book2" src="flask_server/static/stories/book2/book2.json" />
         <File name="base" src="flask_server/templates/base.html" />
         <File name="choice" src="flask_server/templates/choice.html" />
         <File name="index" src="flask_server/templates/index.html" />
@@ -198,6 +196,8 @@
         <File name="wrappers" src="packages/werkzeug/wrappers.py" />
         <File name="wsgi" src="packages/werkzeug/wsgi.py" />
         <File name="Normagrafik3" src="html/img/Normagrafik3.xcf" />
+        <File name="cover" src="flask_server/static/stories/drageridderne/assets/images/cover.jpg" />
+        <File name="drageridderne" src="flask_server/static/stories/drageridderne/drageridderne.json" />
     </Resources>
     <Topics />
     <IgnoredPaths />

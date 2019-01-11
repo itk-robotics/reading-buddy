@@ -360,7 +360,6 @@ class PythonAppMain(object):
     @qi.nobind
     def feedback(self):
         animation = ["animations/Stand/Gestures/Kisses_1",
-         "animations/Stand/Emotions/Positive/Excited_1",
          "animations/Stand/Emotions/Positive/Excited_2",
          "animations/Stand/Emotions/Positive/Excited_3",
          "animations/Stand/Emotions/Positive/Happy_4"

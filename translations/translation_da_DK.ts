@@ -63,10 +63,15 @@
             <translation type="obsolete">Det var et rigtigt godt kapitel. Jeg fik meget mere at vide om Tam og forstår ham lidt bedre nu. \pau=500\ Nu ved jeg lidt mere om Tam og dem han kender. Hvem tror I er vigtigst for Tam. Er det Venner eller Familie?</translation>
         </message>
         <message>
-            <location filename="animations/Nedslag_2/behavior.xar" line="0"/>
             <source>Det var et rigtigt godt kapitel. Jeg fik meget mere at vide om Tam og forstår ham lidt bedre nu. \pau=800\ Nu ved jeg lidt mere om Tam og dem han kender. /pau=800/ Hvem tror I er vigtigst for Tam. /pau=500/ Er det Venner eller er det Familie?</source>
             <comment>Text</comment>
-            <translation type="unfinished">Det var et rigtigt godt kapitel. Jeg fik meget mere at vide om Tam og forstår ham lidt bedre nu. \pau=800\ Nu ved jeg lidt mere om Tam og dem han kender. /pau=800/ Hvem tror I er vigtigst for Tam. /pau=500/ Er det Venner eller er det Familie?</translation>
+            <translation type="obsolete">Det var et rigtigt godt kapitel. Jeg fik meget mere at vide om Tam og forstår ham lidt bedre nu. \pau=800\ Nu ved jeg lidt mere om Tam og dem han kender. /pau=800/ Hvem tror I er vigtigst for Tam. /pau=500/ Er det Venner eller er det Familie?</translation>
+        </message>
+        <message>
+            <location filename="animations/Nedslag_2/behavior.xar" line="0"/>
+            <source>Det var et rigtigt godt kapitel. Jeg fik meget mere at vide om Tam og forstår ham lidt bedre nu. \pau=800\ Nu ved jeg lidt mere om Tam og dem han kender. \pau=800\ Hvem tror I er vigtigst for Tam. \pau=500\ Er det Venner eller er det Familie?</source>
+            <comment>Text</comment>
+            <translation type="unfinished">Det var et rigtigt godt kapitel. Jeg fik meget mere at vide om Tam og forstår ham lidt bedre nu. \pau=800\ Nu ved jeg lidt mere om Tam og dem han kender. \pau=800\ Hvem tror I er vigtigst for Tam. \pau=500\ Er det Venner eller er det Familie?</translation>
         </message>
     </context>
     <context>

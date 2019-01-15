@@ -198,6 +198,7 @@
         <File name="Normagrafik3" src="html/img/Normagrafik3.xcf" />
         <File name="cover" src="flask_server/static/stories/drageridderne/assets/images/cover.jpg" />
         <File name="drageridderne" src="flask_server/static/stories/drageridderne/drageridderne.json" />
+        <File name="environment" src="environment.yml" />
     </Resources>
     <Topics />
     <IgnoredPaths />

@@ -66,7 +66,7 @@
   <robotRequirement model="JULIETTE"/>
  </requirements>
  <services>
-  <service execStart="main.py" name="PythonAppMain" autorun="false"/>
+  <service name="PythonAppMain" execStart="main.py" autorun="false"/>
  </services>
  <executableFiles>
   <file path="main.py"/>

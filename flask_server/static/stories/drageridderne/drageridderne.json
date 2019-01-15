@@ -1,0 +1,262 @@
+{
+    "title" : "Drageridderne",
+    "author" : "Jo Salmson & Åsa Ekström",
+    "cover_image" : "/assets/images/cover.jpg",
+    "intro_say" : "",
+    "outtro_say" : "\\rspd=80\\Selvom jeg har mange venner kan jeg altid bruge flere. Jeg vil gerne have et billede af jer, mine nye læsevenner, op at hænge på væggen.\\pau=500\\Jeg forstår historien bedre nu. Måske kommer robotter til at kunne læse en gang i fremtiden.\\pau=500\\I kan læse videre inde på eReolen Go.",
+    "chapters" : [
+        {
+            "number" : "1",
+            "pages" : [
+                {
+                    "content" : [
+                        {
+                            "chapter_title" : "INTRODUKTION",
+                            "text" : "Den forældreløse tiggerdreng Tam drømmer om at kunne sidde på ryggen af en drage som drageridder. I mange år har der ikke eksisteret en ægte drageridder. Hver aften venter han ved bymuren for at få et glimt af de store drager. For tiggerdrenge slipper ikke igennem porten til kongens slot, hvor dragestalden ligger, eller gør de? Tiggerdrengen Tam er første bind i fantasyserien om DRAGERIDDERNE."
+                        }
+                    ]
+                },
+
+                {
+                    "content" : [
+                        {
+                            "chapter_title" : "DRAGER PÅ HIMLEN",
+                            "text" : "Så langt tilbage Tam kunne huske, havde han stået oppe på den ydre bymur næsten hver aften og set dragerne komme flyvende hen over sletten."
+                        },
+                        {
+                            "text" : "Otte var der i alt, alle i forskellige farver, og han kendte hver eneste af dem: Blege, Røde, Lette, Bella, Sorte, Skygge, Smaragd og Sky."
+                        },
+                        {
+                            "text" : "Han fik altid ondt i maven af længsel: Tænk at svæve af sted højt oppe over jorden."
+                        },
+                        {
+                            "text" : "Denne gang var dragerne senere på den end sædvanlig. Solen strejfede allerede horisonten, da Tam opdagede dem over skoven på den anden side af Dahrfloden."
+                        }
+                    ]
+                },
+                {                    
+                    "content" : [
+
+                        {
+                            "text" : "Han fulgte dem med blikket, mens de nærmede sig."
+                        },
+                        {
+                            "text" : "”Bliver du aldrig træt af at stå her og kigge?” sagde Hind."
+                        },
+                        {
+                            "text" : "Den gamle soldat lænede sig tungt op ad sin langstav."
+                        },
+                        {
+                            "text" : "Tam rystede på hovedet."
+                        },
+                        {
+                            "text" : "Så sukkede han."
+                        },
+                        {
+                            "text" : "Han vidste udmærket, at han aldrig ville komme nærmere end det her. Dragerne og drageridderne boede oppe ved kongens slot inden for den femte bymur."
+                        }
+                    ]
+                },
+                {
+                    "content" : [
+
+                        {
+                            "text" : "Der ville en tiggerdreng som Tam aldrig blive sluppet ind. Sådan var det bare."
+                        },
+                        {
+                            "text" : "Pludselig opdagede Tam noget, der fik ham til at rynke panden."
+                        },
+                        {
+                            "text" : "Dragerne fløj i en anden formation, end de plejede. To af dem holdt sig tæt op ad Blege, den store, hvide. Det så ud, som om de forsøgte at støtte den."
+                        },
+                        {
+                            "text" : "Var den mon blevet såret under opgaven?"
+                        },
+                        {
+                            "text" : "Men ridderen på den hvide drages ryg så mere irriteret end bekymret ud, da de strøg hen over bymuren. Tam kunne høre, hvordan han skreg til dragen, at den skulle skynde sig."
+                        }
+                    ]
+                },
+                {
+                    "content" : [
+
+                        {
+                            "text" : "”Det der var da noget nyt,” sagde Hind. ”Men drager kan vel også blive trætte.”"
+                        },
+                        {
+                            "text" : "Tam vidste, at dragerne var ældre end nogen anden – ja, endda ældre end selve byen. Men han havde aldrig tænkt på dem som gamle og trætte. De så altid så strålende smukke og stærke ud."
+                        },
+                        {
+                            "text" : "Tam fulgte bekymret Bleges besværede vingeslag med øjnene. Han kunne ikke forstå, hvordan ridderen kunne lyde så irriteret. Kunne han slet ikke se, at dragen måtte lægge alle kræfter i for at flyve op til slottet?"
+                        }
+                    ]
+                },
+                {
+                    "content" : [
+
+                       {
+                            "text" : "Byen Demar var bygget på et kegleformet bjerg, der stod helt alene nær Dahrflodens munding. Det var den eneste by i hele verden, der havde fem bymure, den ene bag den anden."
+                        },
+                        {
+                            "text" : "Højt oppe på bjerget lå det kongelige slot og dragestalden."
+                        },
+                        {
+                            "text" : "Nu fløj dragerne i samlet flok derop og forsvandt bag tårnene."
+                        },
+                        {
+                            "text" : "Tam gned sig i øjnene. Han havde stirret så længe mod den nedgående sol, at de sved, og hans hoved dunkede, præcis som det havde gjort i flere dage."
+                        }
+                    ]
+                },
+                {
+                    "content" : [
+
+
+                        {
+                            "text" : "Hind stak hånden i frakkelommen og tog en sandwich op."
+                        },
+                        {
+                            "text" : "”Her,” sagde hun. ”Min datter smurte en ekstra til mig. Men du er sikkert mere sulten end jeg.”"
+                        },
+                        {
+                            "text" : "Tam tog imod den. Så vendte han om og løb hen mod trappen."
+                        },
+                        {
+                            "text" : "”Det skader ikke at sige tak,” råbte Hind efter ham. Men soldaten grinede godmodigt. De kendte efterhånden hinanden så godt."
+                        }
+
+                    ]
+                }
+            ],
+            "question_animation" : "reading_buddy/animations/Nedslag1",
+            "question" : "Spørgsmål til kapitel 1 ",
+            "options" : {"Bekymret": "reading_buddy/animations/Bekymret", "Bange": "reading_buddy/animations/Bange"}
+        },
+        {
+            "number" : "2",
+            "pages" : [
+                {
+                    "content" : [
+                        {
+                            "chapter_title" : "HYTTEN VED MUREN",
+                            "text" : "Da Tam var kommet ned fra bymuren, smuttede han ind bag trappen."
+                        },
+                        {
+                            "text" : "Der, skjult i skyggen, lå hans lille hytte. Det var mest en samling af pinde og brædder, der stod lænet op ad selve murstenene, men hytten holdt regnen og den værste kulde ude."
+                        },
+                        {
+                            "text" : "Tam løftede på en planke og kravlede ind ad den trange åbning. Her havde han nu boet i et halvt år helt alene."
+                        },
+                        {
+                            "text" : "Hans hoved værkede endnu værre end før. Det ligesom susede for ørerne."
+                        }
+                    ]
+                },
+                {
+                    "content" : [
+                        {
+                            "text" : "Nogle gange lød det næsten, som om en stemme mumlede noget, og det bekymrede ham mere end noget andet."
+                        },
+                        {
+                            "text" : "Måske var det, fordi han var så sulten?"
+                        },
+                        {
+                            "text" : "Tam kravlede ind blandt de klude, han brugte som seng. Han tog en stor bid af sandwichen og tvang sig selv til at tygge langsomt, så den varede længere."
+                        },
+                        {
+                            "text" : "Men da den var spist, føltes maven stadig tom."
+                        },
+                        {
+                            "text" : "Tam havde set så elendig ud denne morgen, at soldaterne havde nægtet at slippe ham inden for den anden bymur. De ville ikke sprede sygdomme længere ind i byen. Han var nødt til at blive her i byens udkant, hvor folk var så fattige, at de ikke havde meget at give væk."
+                        }
+                    ]
+                },
+                {
+                    "content" : [
+                        {
+                            "text" : "Det var ikke lykkedes ham at finde noget at spise hele dagen."
+                        },
+                        {
+                            "text" : "”Tam. Er du der?”"
+                        },
+                        {
+                            "text" : "Planken blev skubbet til side, og hans ven Indre smilede til ham."
+                        },
+                        {
+                            "text" : "”Må jeg komme ind?”"
+                        },
+                        {
+                            "text" : "”Selvfølgelig,” svarede Tam."
+                        },
+                        {
+                            "text" : "”Jeg har mad med,” sagde Indre og bandt den bylt op, han havde båret på. ”Far fik arbejde i havnen i morges, og jeg huggede nogle mønter fra ham, inden han gik på værtshus.”"
+                        },
+                        {
+                            "text" : "Indre tog en rygende varm kødtærte frem og et helt brød. Så stillede han et krus mælk ved siden af."
+                        }
+                    ]
+                },
+                {
+                    "content" : [
+                        {
+                            "text" : "Tam stirrede begærligt på det. Det var ikke ret tit, at han smagte kød."
+                        },
+                        {
+                            "text" : "”Vil du sove her?” spurgte han, mens han tog imod et stort stykke tærte."
+                        },
+                        {
+                            "text" : "Indre nikkede taknemmeligt. Hans far var sjældent i godt humør, når han kom hjem efter at have drukket med de andre på værtshuset."
+                        },
+                        {
+                            "text" : "Nogle gange er det dejligt at være forældreløs, tænkte Tam. Han tog en stor bid af sin kødtærte og sukkede af nydelse, da han krøb sammen blandt kludene."
+                        },
+                        {
+                            "text" : "Selv kunne han slet ikke huske sine forældre. Han vidste ikke engang, hvor gammel han var. Når han gættede, blev det nogle gange til elleve år og nogle gange tretten."
+                        }
+                    ]
+                },
+                {
+                    "content" : [
+                        {
+                            "text" : "Saria, en gammel tiggerkone, havde fundet ham grædende i en gyde, da han var en lille dreng. Det efterår havde en forfærdelig pest hærget i byen. Alle gik ud fra, at hans familie var død af sygdommen, men ingen fandt nogensinde ud af, hvem hans forældre havde været."
+                        },
+                        {
+                            "text" : "Tam havde alligevel været heldig, det vidste han godt. Han fik lov til at bo hos Saria i flere år."
+                        },
+                        {
+                            "text" : "Folk gav tiggerkonen mere, når hun havde en dreng med, som havde overlevet pesten."
+                        },
+                        {
+                            "text" : "De plejede at tigge foran et bageri, og da Saria døde, havde den rare bager taget Tam til sig som dejdreng."
+                        }
+                    ]
+                },
+                {
+                    "content" : [
+                        {
+                            "text" : "Hver nat rørte han i dejfadene, indtil byen langsomt vågnede til live omkring ham. Det var et tungt arbejde, men der var varmt ved de store ovne, og han manglede aldrig brød at spise."
+                        },
+                        {
+                            "text" : "Men tidligt på foråret var bageren og hans stakkels kone, som var så syg, flyttet uden for byen."
+                        },
+                        {
+                            "text" : "Lige siden havde Tam måttet klare sig på egen hånd."
+                        },
+                        {
+                            "text" : "Han slikkede kødsaften af fingrene og rakte ud efter mælkekruset."
+                        },
+                        {
+                            "text" : "”Der bliver kaos i byen i morgen,” sagde Indre. ”Går du med hen og ser på, når Rinalder flytter?”"
+                        },
+                        {
+                            "text" : "Tam tog en stor slurk. Så begyndte han at fortælle om sine planer."
+                        }
+                    ]
+                }
+            ],
+            "question_animation" : "reading_buddy/animations/Nedslag_2",
+            "question" : "Spørgsmål til kapitel 2 ",
+            "options" : {"Familie": "reading_buddy/animations/Familie", "Venner": "reading_buddy/animations/Venner"}
+        }
+    ]     
+}
